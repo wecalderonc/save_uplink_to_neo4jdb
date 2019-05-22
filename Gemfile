@@ -1,0 +1,11 @@
+source 'http://rubygems.org'
+
+gem 'rspec'
+gem 'dotenv'
+gem 'dry-transaction'
+gem 'dry-validation'
+gem 'faraday'
+gem 'vcr'
+gem 'webmock'
+gem 'activesupport'
+gem 'neo4j-core'

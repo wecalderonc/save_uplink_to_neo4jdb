@@ -1,0 +1,21 @@
+version: '3'
+services:
+  test:
+    image: zonawik1/save_uplink_to_neo4jdb:1
+    command: bash -c "bundle && rspec"
+    volumes:
+      - .:/lambda_docker
+    tty: true
+    stdin_open: true
+
+  update:
+     image: zonawik1/save_uplink_to_neo4jdb:1
+     command: >
+       bash -c "apt-get install -y zip &&
+       bundle install --path vendor/bundle &&
+       zip -9 -r lambda_function.zip lambda_function.rb vendor lib &&
+       aws lambda update-function-code --function-name  arn:aws:lambda:us-east-1:247246293844:function:createDeviceSigfox --zip-file fileb://lambda_function.zip"
+     volumes:
+       - .:/lambda_docker
+     tty: true
+     stdin_open: true

@@ -1,0 +1,5 @@
+*.swp
+*.owp
+*.env
+*.aws/
+*.ssh/
