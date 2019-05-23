@@ -1,7 +1,7 @@
 require 'dry/transaction/operation'
 
 #Separa el mensaje enviado como UPLINK desde el dispositivo vía Sigfox y guarda la info en cada modelo
-class Webhooks::SaveUplinks::SaveMessagesSeparatedInDB
+class SaveUplinks::SaveMessagesSeparatedInDB
   include Dry::Transaction::Operation
 
   def call(input)

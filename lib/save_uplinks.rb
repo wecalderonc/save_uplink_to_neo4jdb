@@ -1,8 +1,8 @@
 #Transacción para guardar en DB los mensajes enviados desde el dispositivo.
 require_relative 'webhook_container.rb'
 
-class Webhooks::SaveUplinks
-  include Dry::Transaction(container: Webhooks::WebhookContainer)
+class SaveUplinks
+  include Dry::Transaction(container: WebhookContainer)
 
   step :validate_input,                 with: "save_uplinks.validate_input"
   step :validate_thing_existence,       with: "save_uplinks.validate_thing_existence"

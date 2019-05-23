@@ -1,7 +1,7 @@
 require 'dry/transaction/operation'
 
 #Construye el objeto UPLINK y lo valida para que el sgte paso pueda ser guardado en DB
-class Webhooks::SaveUplinks::BuildUplink
+class SaveUplinks::BuildUplink
   include Dry::Transaction::Operation
 
   def call(input)

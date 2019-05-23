@@ -1,6 +1,6 @@
 require 'dry/transaction/operation'
 
-class Webhooks::SaveUplinks::ValidateThingExistence
+class SaveUplinks::ValidateThingExistence
   include Dry::Transaction::Operation
 
   def call(input)

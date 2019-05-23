@@ -6,17 +6,13 @@ require './models/thing.rb'
 require './config/neo4j_config.rb'
 
 require 'active_support'
-
-
 ActiveSupport::Dependencies.autoload_paths = [
   'lib/',
 ]
 
-
 module Handler
   def self.lambda_handler(event:, context:)
-    p result = Thing.find_by(name: "test3")
-    Webhooks::SaveUplinks.new.execute(event)
+    SaveUplinks.new.execute(event)
   end
 end
 

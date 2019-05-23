@@ -1,7 +1,7 @@
 require 'dry/transaction/operation'
 
 #Guarda en DB todo el UPLINK de un dispositivo.
-class Webhooks::SaveUplinks::CreateUplink
+class SaveUplinks::CreateUplink
   include Dry::Transaction::Operation
 
   def call(input)

@@ -2,7 +2,7 @@ require 'dry/transaction/operation'
 require './lib/errors.rb'
 
 #Valida datos que vienen en el payload enviado por los dispositivos vía sigfox
-class Webhooks::SaveUplinks::ValidateInput
+class SaveUplinks::ValidateInput
   include Dry::Transaction::Operation
 
   def call(input)
