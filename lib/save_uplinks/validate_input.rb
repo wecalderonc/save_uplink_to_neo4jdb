@@ -1,7 +1,7 @@
 require 'dry/transaction/operation'
 require './lib/errors.rb'
 
-#Valida datos que vienen en el payload enviado por los dispositivos vía sigfox
+#Validate data that comes inside the payload sended from the devices.
 class SaveUplinks::ValidateInput
   include Dry::Transaction::Operation
 

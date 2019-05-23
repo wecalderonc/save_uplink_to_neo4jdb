@@ -2,7 +2,7 @@ require 'forwardable'
 require 'neo4j/version'
 
 require 'neo4j-core'
-require 'neo4j/core/query_ext' # From this gem
+require 'neo4j/core/query_ext'
 require 'neo4j/core/cypher_session/adaptors/http'
 
 require 'neo4j/active_base'
@@ -106,7 +106,4 @@ end
 load 'neo4j/tasks/migration.rake'
 
 require 'neo4j/active_node/orm_adapter'
-if defined?(Rails)
-  require 'rails/generators'
-  require 'rails/generators/neo4j_generator'
-end
+
