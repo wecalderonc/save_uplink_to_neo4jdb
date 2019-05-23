@@ -1,6 +1,6 @@
 require 'dry/transaction/operation'
 
-#Guarda en DB todo el UPLINK de un dispositivo.
+#Save in db all the uplink of the devices.
 class SaveUplinks::CreateUplink
   include Dry::Transaction::Operation
 

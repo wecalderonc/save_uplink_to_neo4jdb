@@ -1,6 +1,6 @@
 require 'dry/transaction/operation'
 
-#Separa el mensaje enviado como UPLINK desde el dispositivo vía Sigfox y guarda la info en cada modelo
+#Split the message sent by the device and saves the messages inside the uplink in their models·
 class SaveUplinks::SaveMessagesSeparatedInDB
   include Dry::Transaction::Operation
 

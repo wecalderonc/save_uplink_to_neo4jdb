@@ -1,6 +1,6 @@
 require 'dry/transaction/operation'
 
-#Construye el objeto UPLINK y lo valida para que el sgte paso pueda ser guardado en DB
+#Build the UPLINK objetc and validates for the saving in db
 class SaveUplinks::BuildUplink
   include Dry::Transaction::Operation
 
