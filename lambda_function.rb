@@ -1,8 +1,6 @@
-require './requires/index_requires.rb'
+require './config/application.rb'
 
 module Handler
   def self.lambda_handler(event:, context:)
-    SaveUplinks.new.execute(event)
   end
 end
-
