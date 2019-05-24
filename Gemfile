@@ -10,3 +10,8 @@ gem 'vcr'
 gem 'webmock'
 gem 'activesupport'
 gem 'neo4j'
+
+group :development do
+  # Quality Assurance Tools
+  gem 'rubycritic', require: false
+end
