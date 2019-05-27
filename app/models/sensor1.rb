@@ -7,4 +7,5 @@ class Sensor1
 
   property :value, type: String
 
+  has_one :out, :uplink, type: :BELONGS_TO
 end
