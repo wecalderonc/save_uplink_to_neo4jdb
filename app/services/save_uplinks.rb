@@ -6,9 +6,22 @@ class SaveUplinks
 
   step :validate_input,                 with: "save_uplinks.validate_input"
   step :validate_thing_existence,       with: "save_uplinks.validate_thing_existence"
+  map  :parse_data,                      with: "parse_data"
 
   def execute(input)
     self.call(input)
+  end
+
+  private
+
+  def parse_data(input)
+    data = input[:params][:state][:reported][:data]
+    messages = split_message(data)
+    input.merge(messages: messages)
+  end
+
+  def split_message(payload)
+    payload.reverse.split('').each_slice(5).map {|message| message.reverse.join}
   end
 end
 
