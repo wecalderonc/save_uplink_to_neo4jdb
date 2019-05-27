@@ -6,7 +6,6 @@ class Uplink
   include Neo4j::ActiveNode
   include Neo4j::Timestamps
 
-  property :name, type: String
   property :data, type: String
   property :avgsnr, type: String
   property :rssi, type: String
@@ -18,6 +17,9 @@ class Uplink
   property :time, type: String
   property :sec_uplinks, type: String
   property :sec_downlinks, type: String
+
+  validates :long, :data, :avgsnr, :rssi, :long,
+  :lat, :snr, :station, :seqnumber, :time, :sec_uplinks, :sec_downlinks, presence: true
 
   has_one :in, :uplinks_created, type: :UPLINK_CREATED, model_class: :Thing
 

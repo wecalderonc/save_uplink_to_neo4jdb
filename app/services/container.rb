@@ -8,6 +8,7 @@ class Container
   namespace "save_uplinks" do |ops|
     ops.register("validate_input")                { SaveUplinks::ValidateInput.new }
     ops.register("validate_thing_existence")      { SaveUplinks::ValidateThingExistence.new }
+    ops.register("build_uplink")                  { SaveUplinks::BuildUplink.new }
   end
 
 end
