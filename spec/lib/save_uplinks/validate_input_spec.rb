@@ -1,28 +1,29 @@
+require './config/application.rb'
 require './lib/save_uplinks/validate_input.rb'
 
 RSpec.describe SaveUplinks::ValidateInput do
 
   describe "#call" do
     let(:input)  {
-    {
-      params: {
-        "state": {
-          "reported": {
-            "device":"2BEE81",
-            "data":"00670430080670200001ascd",
-            "time":"1548277798",
-            "snr":"16.32",
-            "station":"146A",
-            "avgSnr":"18.47",
-            "lat":"5.0",
-            "lng":"-74.0",
-            "rssi":"-111.00",
-            "seqNumber":"77"
+      {
+        params: {
+          "state": {
+            "reported": {
+              "device":"2BEE81",
+              "data":"00670430080670200001ascd",
+              "time":"1548277798",
+              "snr":"16.32",
+              "station":"146A",
+              "avgSnr":"18.47",
+              "lat":"5.0",
+              "lng":"-74.0",
+              "rssi":"-111.00",
+              "seqNumber":"77"
+            }
           }
         }
       }
     }
-  }
 
     context "The input is valid" do
       it "Should return a Success response" do

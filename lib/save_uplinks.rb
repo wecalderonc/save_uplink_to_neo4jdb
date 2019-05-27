@@ -1,6 +1,6 @@
-#Transacción para guardar en DB los mensajes enviados desde el dispositivo.
 require_relative 'container.rb'
 
+#Transaction for save uplinks in neo4jdb
 class SaveUplinks
   include Dry::Transaction(container: Container)
 

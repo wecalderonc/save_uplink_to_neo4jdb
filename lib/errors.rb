@@ -1,3 +1,4 @@
+#Errors control
 module Errors
   def self.failed_request(status, message)
     { status: status, message: message }

@@ -1,3 +1,5 @@
+require './lib/errors.rb'
+
 RSpec.describe Errors do
   let(:subject) { described_class }
   let(:status)  { :success }
