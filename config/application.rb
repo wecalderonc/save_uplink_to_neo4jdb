@@ -6,9 +6,10 @@ require './config/neo4j_config.rb'
 
 require 'active_support'
 ActiveSupport::Dependencies.autoload_paths = [
+  'app/services',
   'lib/',
   'spec/'
 ]
 
 require './lib/errors.rb'
-require './models/thing.rb'
+require './app/models/thing.rb'

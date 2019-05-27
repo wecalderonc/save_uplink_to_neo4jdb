@@ -1,5 +1,5 @@
 require './config/application.rb'
-require './lib/save_uplinks/validate_input.rb'
+require './app/services/save_uplinks/validate_input.rb'
 
 RSpec.describe SaveUplinks::ValidateInput do
 
