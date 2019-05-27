@@ -2,7 +2,10 @@ version: '3'
 services:
   test:
     image: zonawik1/save_uplink_to_neo4jdb:1
-    command: bash -c "bundle && rspec"
+    command: >
+      bash -c "bundle && rspec &&
+      chmod +x bin/shot &&
+      bin/shot"
     volumes:
       - .:/lambda_docker
     tty: true
