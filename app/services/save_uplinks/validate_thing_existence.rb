@@ -6,7 +6,6 @@ class SaveUplinks::ValidateThingExistence
 
   def call(input)
     device = input[:params][:state][:reported][:device]
-
     thing = Thing.find_by(name: device)
     if thing.present?
       Success input.merge(thing: thing)
