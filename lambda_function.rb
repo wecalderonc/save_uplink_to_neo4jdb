@@ -7,11 +7,12 @@ module Handler
   end
 end
 
+
 event = {
       params: {
         "state": {
           "reported": {
-            "device":"test4",
+            "device":"testW",
             "data":"00670430080670200001ascd",
             "time":"1548277798",
             "snr":"16.32",

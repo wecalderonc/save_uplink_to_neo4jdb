@@ -6,7 +6,9 @@ class SaveUplinks
 
   step :validate_input,                 with: "save_uplinks.validate_input"
   step :validate_thing_existence,       with: "save_uplinks.validate_thing_existence"
-  map  :parse_data,                      with: "parse_data"
+  map  :parse_data,                     with: "parse_data"
+  step :build_uplink,                   with: "save_uplinks.build_uplink"
+  step :create_uplink,                  with: "save_uplinks.create_uplink"
 
   def execute(input)
     self.call(input)
