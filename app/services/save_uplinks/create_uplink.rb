@@ -11,7 +11,7 @@ class SaveUplinks::CreateUplink
     if uplink.save
       Success input
     else
-      Failure Errors.general_error("Uplink can't be save in DB", self.class)
+      Failure Errors.general_error(uplink.errors.messages, self.class)
     end
   end
 end

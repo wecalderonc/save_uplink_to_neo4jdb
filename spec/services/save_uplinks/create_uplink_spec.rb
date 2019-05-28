@@ -46,7 +46,7 @@ RSpec.describe SaveUplinks::CreateUplink do
         response = subject.call(input)
 
         expect(response).to be_failure
-        expect(response.failure[:error]).to eq("Uplink can't be save in DB")
+        expect(response.failure[:error]).to eq(:data => ["can't be blank"])
       end
     end
   end

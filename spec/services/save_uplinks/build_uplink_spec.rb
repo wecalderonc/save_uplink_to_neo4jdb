@@ -39,7 +39,7 @@ RSpec.describe SaveUplinks::BuildUplink do
         response = subject.call(input)
 
         expect(response).to be_failure
-        expect(response.failure[:error]).to eq("Uplink can't be build, not valid, params incomplete")
+        expect(response.failure[:error]).to eq(:long => ["can't be blank", "can't be blank"])
       end
     end
 
@@ -49,7 +49,7 @@ RSpec.describe SaveUplinks::BuildUplink do
         response = subject.call(input)
 
         expect(response).to be_failure
-        expect(response.failure[:error]).to eq("Uplink can't be build, not valid, params incomplete")
+        expect(response.failure[:error]).to eq(:lat => ["can't be blank"])
       end
     end
 
@@ -59,7 +59,7 @@ RSpec.describe SaveUplinks::BuildUplink do
         response = subject.call(input)
 
         expect(response).to be_failure
-        expect(response.failure[:error]).to eq("Uplink can't be build, not valid, params incomplete")
+        expect(response.failure[:error]).to eq(:snr => ["can't be blank"])
       end
     end
 
@@ -69,7 +69,7 @@ RSpec.describe SaveUplinks::BuildUplink do
         response = subject.call(input)
 
         expect(response).to be_failure
-        expect(response.failure[:error]).to eq("Uplink can't be build, not valid, params incomplete")
+        expect(response.failure[:error]).to eq(:avgsnr => ["can't be blank"])
       end
     end
 
@@ -79,7 +79,7 @@ RSpec.describe SaveUplinks::BuildUplink do
         response = subject.call(input)
 
         expect(response).to be_failure
-        expect(response.failure[:error]).to eq("Uplink can't be build, not valid, params incomplete")
+        expect(response.failure[:error]).to eq(:seqnumber => ["can't be blank"])
       end
     end
 
@@ -89,7 +89,7 @@ RSpec.describe SaveUplinks::BuildUplink do
         response = subject.call(input)
 
         expect(response).to be_failure
-        expect(response.failure[:error]).to eq("Uplink can't be build, not valid, params incomplete")
+        expect(response.failure[:error]).to eq(:station => ["can't be blank"])
       end
     end
   end
