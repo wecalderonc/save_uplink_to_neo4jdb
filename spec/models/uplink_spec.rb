@@ -18,7 +18,6 @@ RSpec.describe Uplink, type: :model do
 
   it { is_expected.to have_one(:uplinks_created).with_direction(:in) }
 
-
   it { is_expected.to have_one(:Accumulator).with_direction(:in) }
   it { is_expected.to have_one(:Alarm).with_direction(:in) }
   it { is_expected.to have_one(:Sensor1).with_direction(:in) }

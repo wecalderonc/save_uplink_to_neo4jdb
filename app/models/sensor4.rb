@@ -1,6 +1,5 @@
 require 'neo4j/active_node'
 
-#Model Sensor4
 class Sensor4
   include Neo4j::ActiveNode
   include Neo4j::Timestamps

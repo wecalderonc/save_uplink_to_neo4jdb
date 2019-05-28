@@ -13,7 +13,7 @@ class SaveUplinks::BuildUplink
     if uplink.valid?
       Success input.merge(uplink: uplink)
     else
-      Failure Errors.general_error("Uplink can't be build", self.class)
+      Failure Errors.general_error("Uplink can't be build, not valid, params incomplete", self.class)
     end
   end
 

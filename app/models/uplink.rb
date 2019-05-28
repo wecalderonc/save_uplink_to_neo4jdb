@@ -1,7 +1,5 @@
-
 require 'neo4j/active_node'
 
-#Model Uplink
 class Uplink
   include Neo4j::ActiveNode
   include Neo4j::Timestamps

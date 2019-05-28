@@ -39,7 +39,7 @@ RSpec.describe SaveUplinks::BuildUplink do
         response = subject.call(input)
 
         expect(response).to be_failure
-        expect(response.failure[:error]).to eq("Uplink can't be build")
+        expect(response.failure[:error]).to eq("Uplink can't be build, not valid, params incomplete")
       end
     end
 
@@ -49,7 +49,7 @@ RSpec.describe SaveUplinks::BuildUplink do
         response = subject.call(input)
 
         expect(response).to be_failure
-        expect(response.failure[:error]).to eq("Uplink can't be build")
+        expect(response.failure[:error]).to eq("Uplink can't be build, not valid, params incomplete")
       end
     end
 
@@ -59,7 +59,7 @@ RSpec.describe SaveUplinks::BuildUplink do
         response = subject.call(input)
 
         expect(response).to be_failure
-        expect(response.failure[:error]).to eq("Uplink can't be build")
+        expect(response.failure[:error]).to eq("Uplink can't be build, not valid, params incomplete")
       end
     end
 
@@ -69,7 +69,7 @@ RSpec.describe SaveUplinks::BuildUplink do
         response = subject.call(input)
 
         expect(response).to be_failure
-        expect(response.failure[:error]).to eq("Uplink can't be build")
+        expect(response.failure[:error]).to eq("Uplink can't be build, not valid, params incomplete")
       end
     end
 
@@ -79,7 +79,7 @@ RSpec.describe SaveUplinks::BuildUplink do
         response = subject.call(input)
 
         expect(response).to be_failure
-        expect(response.failure[:error]).to eq("Uplink can't be build")
+        expect(response.failure[:error]).to eq("Uplink can't be build, not valid, params incomplete")
       end
     end
 
@@ -89,7 +89,7 @@ RSpec.describe SaveUplinks::BuildUplink do
         response = subject.call(input)
 
         expect(response).to be_failure
-        expect(response.failure[:error]).to eq("Uplink can't be build")
+        expect(response.failure[:error]).to eq("Uplink can't be build, not valid, params incomplete")
       end
     end
   end

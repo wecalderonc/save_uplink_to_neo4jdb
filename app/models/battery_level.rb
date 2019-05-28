@@ -1,6 +1,5 @@
 require 'neo4j/active_node'
 
-#Model BatteryLevel
 class BatteryLevel
   include Neo4j::ActiveNode
   include Neo4j::Timestamps
