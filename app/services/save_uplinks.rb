@@ -9,6 +9,7 @@ class SaveUplinks
   map  :parse_data,                     with: "parse_data"
   step :build_uplink,                   with: "save_uplinks.build_uplink"
   step :create_uplink,                  with: "save_uplinks.create_uplink"
+  step :save_messages_in_db,            with: "save_uplinks.save_messages_in_db"
 
   def execute(input)
     self.call(input)
