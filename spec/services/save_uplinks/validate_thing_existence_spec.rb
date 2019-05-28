@@ -9,7 +9,7 @@ RSpec.describe SaveUplinks::ValidateThingExistence do
         params:{
           "state":{
             "reported":{
-              "device":"test4"
+              "device":"2BEE82"
             }
           }
         }
