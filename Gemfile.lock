@@ -123,14 +123,24 @@ GEM
       multi_json
       net_tcp_client (>= 2.0.1)
       typhoeus (>= 1.1.2)
+    neo4j-rake_tasks (0.7.19)
+      os
+      rake
+      ruby-progressbar
+      rubyzip (>= 1.1.7)
+    neo4j-rspec (0.2.7)
+      neo4j (>= 6.0.0)
+      rspec (>= 3.0)
     net_tcp_client (2.2.0)
     orm_adapter (0.5.0)
+    os (1.0.1)
     parser (2.6.3.0)
       ast (~> 2.4.0)
     path_expander (1.0.3)
     psych (3.1.0)
     public_suffix (3.0.3)
     rainbow (3.0.0)
+    rake (12.3.2)
     reek (5.3.2)
       codeclimate-engine-rb (~> 0.4.0)
       kwalify (~> 0.7.0)
@@ -150,6 +160,7 @@ GEM
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.8.0)
     rspec-support (3.8.0)
+    ruby-progressbar (1.10.1)
     ruby_parser (3.13.1)
       sexp_processor (~> 4.9)
     rubycritic (4.0.2)
@@ -162,6 +173,7 @@ GEM
       ruby_parser (~> 3.8)
       tty-which (~> 0.4.0)
       virtus (~> 1.0)
+    rubyzip (1.2.3)
     safe_yaml (1.0.5)
     sexp_processor (4.12.0)
     thread_safe (0.3.6)
@@ -193,6 +205,8 @@ DEPENDENCIES
   factory_bot
   faraday
   neo4j
+  neo4j-rake_tasks
+  neo4j-rspec
   rspec
   rubycritic
   vcr

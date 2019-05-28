@@ -1,3 +1,6 @@
+require './config/application.rb'
+require './app/services/save_uplinks/validate_thing_existence.rb'
+
 RSpec.describe SaveUplinks::ValidateThingExistence do
 
   describe "#call" do

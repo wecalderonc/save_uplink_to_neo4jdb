@@ -15,4 +15,6 @@ group :development do
   # Quality Assurance Tools
   gem 'rubycritic', require: false
   gem 'factory_bot'
+  gem 'neo4j-rspec'
+  gem 'neo4j-rake_tasks'
 end
