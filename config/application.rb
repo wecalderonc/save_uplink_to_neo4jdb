@@ -13,3 +13,13 @@ ActiveSupport::Dependencies.autoload_paths = [
 
 require './lib/errors.rb'
 require './app/models/thing.rb'
+require './app/models/accumulator.rb'
+require './app/models/sensor1.rb'
+require './app/models/sensor2.rb'
+require './app/models/sensor3.rb'
+require './app/models/sensor4.rb'
+require './app/models/valve_position.rb'
+require './app/models/battery_level.rb'
+require './app/models/time_uplink.rb'
+require './app/models/uplink_b_downlink.rb'
+require './app/models/alarm.rb'
