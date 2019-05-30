@@ -5,8 +5,7 @@ class SaveUplinks::SaveMessagesInDB
   include Dry::Transaction::Operation
 
   def call(input)
-    new_messages = input[:new_messages]
-    possible_errors = new_messages.map do |message|
+    possible_errors = input[:new_messages].map do |message|
       bit_descriptor = message[0]
       result = uplink_attributes[bit_descriptor].(message[1..10], input[:uplink])
       if not result.save
@@ -31,7 +30,8 @@ class SaveUplinks::SaveMessagesInDB
       "a"=> lambda { |value, uplink| Sensor4.new(value: value, uplink: uplink) },
       "b"=> lambda { |value, uplink| Alarm.new(value: value, uplink: uplink) }
     }
-    sensors.default = lambda { |value, uplink| Alarm.new()} #Se agrega este alarm para que pase el default (temporalmente)
+
+    sensors.default = lambda { |_, _| Struct.new(:save).new(true) }
     sensors
   end
 end
