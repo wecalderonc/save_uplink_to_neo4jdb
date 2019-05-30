@@ -10,7 +10,7 @@ class Container
     ops.register("validate_thing_existence")      { SaveUplinks::ValidateThingExistence.new }
     ops.register("build_uplink")                  { SaveUplinks::BuildUplink.new }
     ops.register("create_uplink")                 { SaveUplinks::CreateUplink.new }
+    ops.register("save_messages_in_db")           { SaveUplinks::SaveMessagesInDB.new }
   end
-
 end
 

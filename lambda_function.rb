@@ -12,8 +12,8 @@ event = {
       params: {
         "state": {
           "reported": {
-            "device":"testW",
-            "data":"00670430080670200001ascd",
+            "device":"2BEE82",
+            "data":"006704300406702000010000",
             "time":"1548277798",
             "snr":"16.32",
             "station":"146A",
