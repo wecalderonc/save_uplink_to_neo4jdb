@@ -5,6 +5,8 @@ services:
     command: >
       bash -c " service neo4j start &&
       sleep 5 &&
+      echo "CALL dbms.changePassword('neo4j-password');" | cypher-shell -u neo4j -p neo4j --format verbose &&
+      echo "CREATE (:Thing {name: '2BEE82'});" | cypher-shell -u neo4j -p neo4j-password --format verbose &&
       bundle && rspec &&
       chmod +x bin/shot &&
       bin/shot"
