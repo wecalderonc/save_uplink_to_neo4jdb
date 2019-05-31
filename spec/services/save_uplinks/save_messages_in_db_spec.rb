@@ -4,8 +4,8 @@ require './app/services/save_uplinks/save_messages_in_db.rb'
 RSpec.describe SaveUplinks::SaveMessagesInDB do
 
   describe "#call" do
-    let(:thing) { create(:thing) }
-    let(:uplink) { create(:uplink) }
+    let(:thing) { build(:thing) }
+    let(:uplink) { build(:uplink) }
     let(:input)  {
       {
         params:

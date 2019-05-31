@@ -1,6 +1,5 @@
 source 'http://rubygems.org'
 
-gem 'rspec'
 gem 'dotenv'
 gem 'dry-transaction'
 gem 'dry-validation'
@@ -11,10 +10,13 @@ gem 'webmock'
 gem 'activesupport'
 gem 'neo4j'
 
-group :development do
+group :development,:test do
   # Quality Assurance Tools
+  gem 'rspec'
   gem 'rubycritic', require: false
   gem 'factory_bot'
   gem 'neo4j-rspec'
   gem 'neo4j-rake_tasks'
+  gem 'simplecov', require: false
+  gem 'simplecov-console', require: false
 end

@@ -1,7 +1,8 @@
 require_relative './neo4j.rb'
 require_relative './dry.rb'
 
-require 'dotenv/load'
+require 'dotenv'
+Dotenv.load('.env')
 require './config/neo4j_config.rb'
 
 require 'active_support'

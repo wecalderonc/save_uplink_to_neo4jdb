@@ -4,8 +4,8 @@ require './app/services/save_uplinks/create_uplink.rb'
 RSpec.describe SaveUplinks::CreateUplink do
 
   describe "#call" do
-    let(:thing) { create(:thing) }
-    let(:uplink) { create(:uplink) }
+    let(:thing) { build(:thing) }
+    let(:uplink) { build(:uplink) }
     let(:input)  {
       {
         params:

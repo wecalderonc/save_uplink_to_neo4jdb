@@ -26,10 +26,19 @@
 - CONSTRAINT ON ( uplink:Uplink ) ASSERT uplink.uuid IS UNIQUE
 - CONSTRAINT ON ( uplinkbdownlink:UplinkBDownlink ) ASSERT uplinkbdownlink.uuid IS
   UNIQUE
-- CONSTRAINT ON ( user:User ) ASSERT user.uuid IS UNIQUE
 - CONSTRAINT ON ( valveposition:ValvePosition ) ASSERT valveposition.uuid IS UNIQUE
-:indexes:
-- INDEX ON :Category(categoryID)
-- INDEX ON :Product(productID)
-- INDEX ON :Supplier(supplierID)
-:versions: []
+:indexes: []
+:versions:
+- '20190531034538'
+- '20190531034612'
+- '20190531034614'
+- '20190531034615'
+- '20190531034617'
+- '20190531034619'
+- '20190531034620'
+- '20190531034622'
+- '20190531034624'
+- '20190531034625'
+- '20190531034627'
+- '20190531034629'
+- '20190531034631'

@@ -1,6 +1,7 @@
 *.swp
 *.owp
 *.env
+*.env.test
 *.aws/
 *.ssh/
 
@@ -33,6 +34,10 @@
 /gems
 yarn-debug.log*
 .yarn-integrity
+coverage
 
 # Ignore application configuration
 /config/application.yml
+
+#Ignore neo4j db installation
+/db/neo4j/test
