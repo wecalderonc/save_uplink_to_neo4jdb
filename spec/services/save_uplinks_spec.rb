@@ -1,10 +1,8 @@
 require './config/application.rb'
-require './app/services/save_uplinks.rb'
 
 RSpec.describe SaveUplinks do
 
   describe "#call" do
-    let!(:thing) { build(:thing) }
     let(:input)  {
       {
         params: {
