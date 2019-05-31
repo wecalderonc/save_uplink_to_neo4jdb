@@ -6,6 +6,7 @@ class SaveUplinks::ValidateInput
   include Dry::Transaction::Operation
 
   def call(input)
+    input = input.deep_symbolize_keys
     result = validation_schema.(input.to_h)
     if result.success?
       Success input
