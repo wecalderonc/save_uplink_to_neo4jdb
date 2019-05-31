@@ -4,7 +4,7 @@ require './app/services/save_uplinks/build_uplink.rb'
 RSpec.describe SaveUplinks::BuildUplink do
 
   describe "#call" do
-    let(:thing) { create(:thing) }
+    let(:thing) { build(:thing) }
     let(:input)  { {
       params: {
         "state": {
