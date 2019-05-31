@@ -1,6 +1,7 @@
 *.swp
 *.owp
 *.env
+*.env.test
 *.aws/
 *.ssh/
 
