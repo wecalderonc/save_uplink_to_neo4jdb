@@ -11,7 +11,7 @@ gem 'webmock'
 gem 'activesupport'
 gem 'neo4j'
 
-group :development do
+group :development,:test do
   # Quality Assurance Tools
   gem 'rubycritic', require: false
   gem 'factory_bot'
