@@ -14,6 +14,8 @@
 #
 require 'factory_bot'
 require 'neo4j/rspec'
+require 'dotenv'
+Dotenv.load('.env.test')
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate
