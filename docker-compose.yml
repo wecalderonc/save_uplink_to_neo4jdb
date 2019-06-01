@@ -2,14 +2,31 @@ version: '3'
 services:
   test:
     image: zonawik1/save_uplink_to_neo4jdb:1
-    command: >
-      bash -c " service neo4j start &&
-      sleep 5 &&
-      echo "CALL dbms.changePassword('neo4j-password');" | cypher-shell -u neo4j -p neo4j --format verbose &&
-      echo "CREATE (:Thing {name: '2BEE82'});" | cypher-shell -u neo4j -p neo4j-password --format verbose &&
-      bundle && rspec &&
-      chmod +x bin/shot &&
-      bin/shot"
+    command:
+      - /bin/bash
+      - -c
+      - |
+        echo "dbms.security.auth_enabled=false" >> /etc/neo4j/neo4j.conf
+        service neo4j start
+        sleep 5
+        bundle
+        rake neo4j:generate_schema_migration[constraint,Accumulator,uuid]
+        rake neo4j:generate_schema_migration[constraint,Alarm,uuid]
+        rake neo4j:generate_schema_migration[constraint,BatteryLevel,uuid]
+        rake neo4j:generate_schema_migration[constraint,Sensor1,uuid]
+        rake neo4j:generate_schema_migration[constraint,Sensor2,uuid]
+        rake neo4j:generate_schema_migration[constraint,Sensor3,uuid]
+        rake neo4j:generate_schema_migration[constraint,Sensor4,uuid]
+        rake neo4j:generate_schema_migration[constraint,Thing,uuid]
+        rake neo4j:generate_schema_migration[constraint,TimeUplink,uuid]
+        rake neo4j:generate_schema_migration[constraint,UplinkBDownlink,uuid]
+        rake neo4j:generate_schema_migration[constraint,Uplink,uuid]
+        rake neo4j:generate_schema_migration[constraint,ValvePosition,uuid]
+        rake neo4j:migrate
+        cypher-shell -u neo4j -p neo4j-password "CREATE (:Thing {name: '2BEE82'});"
+        rspec
+        chmod +x bin/shot
+        bin/shot
     volumes:
       - .:/lambda_docker
     tty: true
