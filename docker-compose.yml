@@ -2,6 +2,8 @@ version: '3'
 services:
   test:
     image: zonawik1/save_uplink_to_neo4jdb:1
+    environment:
+      - APP_ENV=test
     command:
       - /bin/bash
       - -c
@@ -10,18 +12,6 @@ services:
         service neo4j start
         sleep 5
         bundle
-        rake neo4j:generate_schema_migration[constraint,Accumulator,uuid]
-        rake neo4j:generate_schema_migration[constraint,Alarm,uuid]
-        rake neo4j:generate_schema_migration[constraint,BatteryLevel,uuid]
-        rake neo4j:generate_schema_migration[constraint,Sensor1,uuid]
-        rake neo4j:generate_schema_migration[constraint,Sensor2,uuid]
-        rake neo4j:generate_schema_migration[constraint,Sensor3,uuid]
-        rake neo4j:generate_schema_migration[constraint,Sensor4,uuid]
-        rake neo4j:generate_schema_migration[constraint,Thing,uuid]
-        rake neo4j:generate_schema_migration[constraint,TimeUplink,uuid]
-        rake neo4j:generate_schema_migration[constraint,UplinkBDownlink,uuid]
-        rake neo4j:generate_schema_migration[constraint,Uplink,uuid]
-        rake neo4j:generate_schema_migration[constraint,ValvePosition,uuid]
         rake neo4j:migrate
         cypher-shell -u neo4j -p neo4j-password "CREATE (:Thing {name: '2BEE82'});"
         rspec
@@ -34,6 +24,8 @@ services:
 
   update:
      image: zonawik1/save_uplink_to_neo4jdb:1
+     environment:
+      - APP_ENV=prod
      command: >
        bash -c "apt-get install -y zip &&
        bundle install --path vendor/bundle --without development test &&
