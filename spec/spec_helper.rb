@@ -21,7 +21,9 @@ require './config/neo4j_config.rb'
 
 ENV['APP_ENV'] ||= test
 
+SimpleCov.minimum_coverage 95
 SimpleCov.start
+
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate
