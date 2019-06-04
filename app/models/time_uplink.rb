@@ -1,8 +1,4 @@
-require 'neo4j/active_node'
-
-class TimeUplink
-  include Neo4j::ActiveNode
-  include Neo4j::Timestamps
+class TimeUplink < ApplicationRecord
 
   property :value, type: String
 

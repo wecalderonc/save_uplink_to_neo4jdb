@@ -1,8 +1,4 @@
-require 'neo4j/active_node'
-
-class BatteryLevel
-  include Neo4j::ActiveNode
-  include Neo4j::Timestamps
+class BatteryLevel < ApplicationRecord
 
   property :value, type: String
 
