@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo "Running Brakeman..."
-bundle exec brakeman -c config/brakeman.yml -q
+bundle exec brakeman
 if [ $? -ne 0 ]; then
   exit 1
 else
