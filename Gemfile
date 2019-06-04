@@ -5,7 +5,6 @@ gem 'dry-transaction'
 gem 'dry-validation'
 gem 'dry-auto_inject'
 gem 'faraday'
-gem 'vcr'
 gem 'webmock'
 gem 'activesupport'
 gem 'neo4j'
@@ -19,4 +18,5 @@ group :development,:test do
   gem 'neo4j-rake_tasks'
   gem 'simplecov', require: false
   gem 'simplecov-console', require: false
+  gem 'brakeman'
 end
