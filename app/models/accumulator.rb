@@ -1,9 +1,7 @@
-require 'neo4j/active_node'
+require_relative 'application_record.rb'
 
-class Accumulator
-  include Neo4j::ActiveNode
-  include Neo4j::Timestamps
-
+class Accumulator < ApplicationRecord
+  
   property :value, type: String
 
   validates :value, presence: true

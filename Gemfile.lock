@@ -16,6 +16,7 @@ GEM
       descendants_tracker (~> 0.0.4)
       ice_nine (~> 0.11.0)
       thread_safe (~> 0.3, >= 0.3.1)
+    brakeman (4.5.1)
     codeclimate-engine-rb (0.4.1)
       virtus (~> 1.0)
     coercible (1.0.0)
@@ -196,7 +197,6 @@ GEM
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
     unicode-display_width (1.6.0)
-    vcr (4.0.0)
     virtus (1.0.5)
       axiom-types (~> 0.1)
       coercible (~> 1.0)
@@ -212,6 +212,7 @@ PLATFORMS
 
 DEPENDENCIES
   activesupport
+  brakeman
   dotenv
   dry-auto_inject
   dry-transaction
@@ -225,7 +226,6 @@ DEPENDENCIES
   rubycritic
   simplecov
   simplecov-console
-  vcr
   webmock
 
 BUNDLED WITH

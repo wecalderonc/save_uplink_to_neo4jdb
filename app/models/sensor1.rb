@@ -1,8 +1,4 @@
-require 'neo4j/active_node'
-
-class Sensor1
-  include Neo4j::ActiveNode
-  include Neo4j::Timestamps
+class Sensor1 < ApplicationRecord
 
   property :value, type: String
 

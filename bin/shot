@@ -1,7 +1,15 @@
 #!/bin/bash
 
+echo "Running Brakeman..."
+bundle exec brakeman
+if [ $? -ne 0 ]; then
+  exit 1
+else
+  echo -e "\033[0;32mSecurity Checks OK\033[0m\n"
+fi
+
 echo "Running RubyCritic.."
-bundle exec rubycritic app/ lib/ --minimum-score 70.0 --no-browser
+bundle exec rubycritic app/ lib/ --minimum-score 95.0 --no-browser
 if [ $? -ne 0 ]; then
   exit 1
 else

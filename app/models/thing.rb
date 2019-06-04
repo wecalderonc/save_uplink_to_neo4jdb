@@ -1,8 +1,6 @@
-require 'neo4j/active_node'
+require_relative 'application_record.rb'
 
-class Thing
-  include Neo4j::ActiveNode
-  include Neo4j::Timestamps
+class Thing < ApplicationRecord
 
   property :name, type: String
 

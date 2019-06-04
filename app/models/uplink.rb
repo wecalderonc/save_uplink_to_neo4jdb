@@ -1,8 +1,4 @@
-require 'neo4j/active_node'
-
-class Uplink
-  include Neo4j::ActiveNode
-  include Neo4j::Timestamps
+class Uplink < ApplicationRecord
 
   property :data, type: String
   property :avgsnr, type: String
