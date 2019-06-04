@@ -4,9 +4,9 @@ version: v1.0
 # Name your pipeline. In case you connect multiple pipelines with promotions,
 # the name will help you differentiate between, for example, a CI build phase
 # and delivery phases.
-name: deploy to production
+name: save uplink to neo4j db
 
-#An agent defines the environment in which your code runs.
+# An agent defines the environment in which your code runs.
 # It is a combination of one of available machine types and operating
 # system images.
 # See https://docs.semaphoreci.com/article/20-machine-types
@@ -21,15 +21,25 @@ agent:
 # commands to execute.
 # See https://docs.semaphoreci.com/article/62-concepts
 blocks:
-  - name: Deploy
+  - name: Test
     task:
       secrets:
-        - name: docker-hub
-        - name: lambda
+        - name: dockerhub-access
+        - name: neo4j-db-access
       jobs:
-        - name: aws lambda
+        - name: rspec
           commands:
-            - git clone -b master git@github.com:ZonaWiki/save_uplink_to_neo4jdb.git
+            - git clone -b $SEMAPHORE_GIT_BRANCH git@github.com:ZonaWiki/save_uplink_to_neo4jdb.git
+            - mv .env.test save_uplink_to_neo4jdb/
             - cd save_uplink_to_neo4jdb/
+            - pwd
+            - ls -alh
             - echo $DOCKER_PASSWORD | docker login --username "$DOCKER_USERNAME" --password-stdin
-            - docker-compose run update
+            - docker-compose run test
+promotions:
+  - name: Production Deploy
+    pipeline_file: deploy_production.yml
+    auto_promote_on:
+      - result: passed
+        branch:
+          - master

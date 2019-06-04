@@ -1,6 +1,7 @@
 *.swp
 *.owp
 *.env
+*.env.prod
 *.env.test
 *.aws/
 *.ssh/
@@ -15,6 +16,7 @@
 !/tmp/.keep
 *.swo
 *.swp
+*.zip
 
 # Ignore uploaded files in development
 /storage/*
@@ -35,9 +37,10 @@
 yarn-debug.log*
 .yarn-integrity
 coverage
-
+vendor
 # Ignore application configuration
 /config/application.yml
 
 #Ignore neo4j db installation
 /db/neo4j/test
+

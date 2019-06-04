@@ -16,8 +16,11 @@ require 'factory_bot'
 require 'neo4j/rspec'
 require 'simplecov'
 require 'simplecov-console'
-require 'dotenv'
-Dotenv.load('.env.test')
+require './config/neo4j.rb'
+require './config/neo4j_config.rb'
+
+ENV['APP_ENV'] ||= test
+
 SimpleCov.start
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
