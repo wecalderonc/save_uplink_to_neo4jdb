@@ -16,7 +16,7 @@ RSpec.describe Uplink, type: :model do
   it { is_expected.to define_property :sec_uplinks, :String }
   it { is_expected.to define_property :sec_downlinks, :String }
 
-  it { is_expected.to have_one(:uplinks_created).with_direction(:in) }
+  it { is_expected.to have_one(:thing).with_direction(:in) }
 
   it { is_expected.to have_one(:Accumulator).with_direction(:in) }
   it { is_expected.to have_one(:Alarm).with_direction(:in) }
