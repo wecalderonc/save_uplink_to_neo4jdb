@@ -15,7 +15,7 @@ class Uplink < ApplicationRecord
   validates :long, :data, :avgsnr, :rssi, :long,
   :lat, :snr, :station, :seqnumber, :time, :sec_uplinks, :sec_downlinks, presence: true
 
-  has_one :in, :uplinks_created, type: :UPLINK_CREATED, model_class: :Thing
+  has_one :in, :thing, type: :UPLINK_CREATED
 
   has_one :in, :Accumulator, type: :BELONGS_TO
   has_one :in, :Alarm, type: :BELONGS_TO
