@@ -28,6 +28,8 @@ services:
       - APP_ENV=prod
      command: >
        bash -c "apt-get install -y zip &&
+       bundle &&
+       rake  neo4j:migrate &&
        bundle install --path vendor/bundle --without development test &&
        rm -r vendor/bundle/ruby/2.5.0/cache &&
        zip -9 -r lambda_function.zip lambda_function.rb vendor app config lib &&
