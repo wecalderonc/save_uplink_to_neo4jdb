@@ -30,6 +30,7 @@ blocks:
         - name: aws lambda
           commands:
             - git clone -b master git@github.com:ZonaWiki/save_uplink_to_neo4jdb.git
+            - mv .env.prod save_uplink_to_neo4jdb/
             - cd save_uplink_to_neo4jdb/
             - echo $DOCKER_PASSWORD | docker login --username "$DOCKER_USERNAME" --password-stdin
             - docker-compose run update
