@@ -12,6 +12,6 @@ FactoryBot.define do
     sec_uplinks   {"006"}
     sec_downlinks {"0"}
 
-    association :uplinks_created, factory: :thing
+    association :thing, factory: :thing
   end
 end

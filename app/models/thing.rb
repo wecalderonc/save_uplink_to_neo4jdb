@@ -6,5 +6,5 @@ class Thing < ApplicationRecord
 
   validates :name, presence: true
 
-  has_many :out, :uplinks_created, type: :UPLINK_CREATED, model_class: :Uplink
+  has_many :out, :uplinks, type: :UPLINK_CREATED
 end

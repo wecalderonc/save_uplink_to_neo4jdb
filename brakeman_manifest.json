@@ -1,11 +1,11 @@
 {
   "scan_info": {
-    "app_path": "/home/pcbti-70/code/lambdas/save_uplink_to_neo4jdb",
+    "app_path": "/lambda_docker",
     "rails_version": "4.x",
     "security_warnings": 0,
-    "start_time": "2019-06-04 13:17:09 -0500",
-    "end_time": "2019-06-04 13:17:09 -0500",
-    "duration": 0.060586823,
+    "start_time": "2019-06-25 20:44:47 +0000",
+    "end_time": "2019-06-25 20:44:47 +0000",
+    "duration": 0.093907849,
     "checks_performed": [
       "BasicAuth",
       "BasicAuthTimingAttack",

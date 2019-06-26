@@ -96,7 +96,7 @@ require 'neo4j/active_node/query/query_proxy'
 require 'neo4j/active_node/query'
 require 'neo4j/active_node/scope'
 require 'neo4j/active_node'
-require 'neo4j/rake_tasks'
+#require 'neo4j/rake_tasks'
 
 module Neo4j
   extend ActiveSupport::Autoload

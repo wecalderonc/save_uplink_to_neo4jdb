@@ -26,7 +26,7 @@ class SaveUplinks::BuildUplink
       field[:seqnumber] = uplink_data.delete(:seqNumber)
       field[:sec_downlinks] = uplink_data[:data][0]
       field[:sec_uplinks] = uplink_data[:data][1..3]
-      field[:uplinks_created] = thing
+      field[:thing] = thing
       field.delete(:device)
     end
   end
