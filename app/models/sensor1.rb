@@ -1,5 +1,5 @@
-class Sensor1 < ApplicationRecord
-
+class Sensor1
+  include Neo4j::ActiveNode
   property :value, type: String
 
   validates :value, presence: true

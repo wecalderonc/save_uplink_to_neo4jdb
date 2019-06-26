@@ -1,4 +1,5 @@
-class Alarm < ApplicationRecord
+class Alarm
+  include Neo4j::ActiveNode
 
   property :value, type: String
 
