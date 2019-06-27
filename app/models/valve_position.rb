@@ -1,5 +1,7 @@
-class ValvePosition
-  include Neo4j::ActiveNode
+require_relative 'base_model.rb'
+
+class ValvePosition < BaseModel
+
   property :value, type: String
 
   validates :value, presence: true

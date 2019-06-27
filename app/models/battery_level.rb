@@ -1,5 +1,5 @@
-class BatteryLevel
-  include Neo4j::ActiveNode
+class BatteryLevel < BaseModel
+
   property :value, type: String
 
   validates :value, presence: true

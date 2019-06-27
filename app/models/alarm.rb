@@ -1,5 +1,4 @@
-class Alarm
-  include Neo4j::ActiveNode
+class Alarm < BaseModel
 
   property :value, type: String
 

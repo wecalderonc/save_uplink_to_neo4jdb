@@ -1,5 +1,7 @@
-class Sensor1
-  include Neo4j::ActiveNode
+require_relative 'base_model.rb'
+
+class Sensor1 < BaseModel
+
   property :value, type: String
 
   validates :value, presence: true

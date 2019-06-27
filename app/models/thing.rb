@@ -1,5 +1,7 @@
-class Thing
-  include Neo4j::ActiveNode
+require_relative 'base_model.rb'
+
+class Thing < BaseModel
+
   property :name, type: String
   property :status, type: String
   property :pac, type: String

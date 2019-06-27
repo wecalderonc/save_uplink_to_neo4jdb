@@ -1,5 +1,6 @@
-class Uplink
-  include Neo4j::ActiveNode
+require_relative 'base_model.rb'
+
+class Uplink < BaseModel
 
   property :data, type: String
   property :avgsnr, type: String
