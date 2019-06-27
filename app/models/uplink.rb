@@ -1,6 +1,6 @@
-require_relative 'base_model.rb'
-
-class Uplink < BaseModel
+class Uplink
+  include Neo4j::ActiveNode
+  include Neo4j::Timestamps
 
   property :data, type: String
   property :avgsnr, type: String

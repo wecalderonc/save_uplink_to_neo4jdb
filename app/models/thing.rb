@@ -1,6 +1,6 @@
-require_relative 'base_model.rb'
-
-class Thing < BaseModel
+class Thing
+  include Neo4j::ActiveNode
+  include Neo4j::Timestamps
 
   property :name, type: String
   property :status, type: String
