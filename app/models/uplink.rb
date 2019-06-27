@@ -1,4 +1,6 @@
-class Uplink < ApplicationRecord
+class Uplink
+  include Neo4j::ActiveNode
+  include Neo4j::Timestamps
 
   property :data, type: String
   property :avgsnr, type: String
@@ -15,15 +17,16 @@ class Uplink < ApplicationRecord
   validates :long, :data, :avgsnr, :rssi, :long,
   :lat, :snr, :station, :seqnumber, :time, :sec_uplinks, :sec_downlinks, presence: true
 
-  has_one :in, :thing, type: :UPLINK_CREATED
+  has_one :in, :accumulator, type: :BELONGS_TO
+  has_one :in, :alarm, type: :BELONGS_TO
+  has_one :in, :sensor1, type: :BELONGS_TO
+  has_one :in, :sensor2, type: :BELONGS_TO
+  has_one :in, :sensor3, type: :BELONGS_TO
+  has_one :in, :sensor4, type: :BELONGS_TO
+  has_one :in, :timeUplink, type: :BELONGS_TO
+  has_one :in, :uplinkBDownlink, type: :BELONGS_TO
+  has_one :in, :valvePosition, type: :BELONGS_TO
+  has_one :in, :batteryLevel, type: :BELONGS_TO
 
-  has_one :in, :Accumulator, type: :BELONGS_TO
-  has_one :in, :Alarm, type: :BELONGS_TO
-  has_one :in, :Sensor1, type: :BELONGS_TO
-  has_one :in, :Sensor2, type: :BELONGS_TO
-  has_one :in, :Sensor3, type: :BELONGS_TO
-  has_one :in, :Sensor4, type: :BELONGS_TO
-  has_one :in, :TimeUplink, type: :BELONGS_TO
-  has_one :in, :UplinkBDownlink, type: :BELONGS_TO
-  has_one :in, :ValvePosition, type: :BELONGS_TO
+  has_one :in, :thing, type: :UPLINK_CREATED
 end

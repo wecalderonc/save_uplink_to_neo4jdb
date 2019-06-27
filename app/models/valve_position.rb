@@ -1,9 +1,4 @@
-class ValvePosition < ApplicationRecord
+require_relative 'base_model.rb'
 
-  property :value, type: String
-
-  validates :value, presence: true
-
-  has_one :out, :uplink, type: :BELONGS_TO
-
+class ValvePosition < BaseModel
 end

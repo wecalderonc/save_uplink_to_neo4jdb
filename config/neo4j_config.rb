@@ -1,6 +1,5 @@
 require 'dotenv'
 ENV['APP_ENV'] ||= "test"
-
 Dotenv.load(
   File.expand_path("../../.env.#{ENV['APP_ENV']}", __FILE__))
 

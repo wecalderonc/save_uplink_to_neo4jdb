@@ -1,8 +1,8 @@
 require_relative './neo4j.rb'
 require_relative './dry.rb'
-ENV['APP_ENV'] ||= test
 require './config/neo4j_config.rb'
 
+ENV['APP_ENV'] ||= "test"
 require 'active_support'
 ActiveSupport::Dependencies.autoload_paths = [
   'app/services',
