@@ -11,8 +11,8 @@ FactoryBot.define do
       status { "activated" }
     end
 
-    trait :desactivated do
-      status { "desactivated" }
+    trait :deactivated do
+      status { "deactivated" }
     end
   end
 end
