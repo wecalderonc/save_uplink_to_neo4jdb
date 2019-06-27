@@ -3,9 +3,9 @@
     "app_path": "/lambda_docker",
     "rails_version": "4.x",
     "security_warnings": 0,
-    "start_time": "2019-06-27 17:02:50 +0000",
-    "end_time": "2019-06-27 17:02:51 +0000",
-    "duration": 0.172639767,
+    "start_time": "2019-06-27 17:46:00 +0000",
+    "end_time": "2019-06-27 17:46:00 +0000",
+    "duration": 0.081723658,
     "checks_performed": [
       "BasicAuth",
       "BasicAuthTimingAttack",
