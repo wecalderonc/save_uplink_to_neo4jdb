@@ -3,12 +3,14 @@ require './config/application.rb'
 RSpec.describe SaveUplinks do
 
   describe "#call" do
+    let(:thing) { create(:thing) }
+
     let(:input)  {
       {
         params: {
           "state": {
             "reported": {
-              "device":"2BEE82",
+              "device": thing.name,
               "data":"00670430080670200001ascd",
               "time":"1548277798",
               "snr":"16.32",

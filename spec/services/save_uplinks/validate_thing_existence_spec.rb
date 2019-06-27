@@ -4,12 +4,13 @@ require './app/services/save_uplinks/validate_thing_existence.rb'
 RSpec.describe SaveUplinks::ValidateThingExistence do
 
   describe "#call" do
+    let(:thing) { create(:thing) }
     let(:input)  {
       {
         params:{
           "state":{
             "reported":{
-              "device":"2BEE82"
+              "device": thing.name
             }
           }
         }
