@@ -13,7 +13,6 @@ services:
         sleep 5
         bundle
         rake neo4j:migrate
-        cypher-shell -u neo4j -p neo4j-password "CREATE (:Thing {name: '2BEE82'});"
         rspec
         chmod +x bin/shot
         bin/shot
@@ -30,7 +29,6 @@ services:
        bash -c "apt-get install -y zip &&
        bundle &&
        rake  neo4j:migrate &&
-       bundle install --path vendor/bundle --without development test &&
        rm -r vendor/bundle/ruby/2.5.0/cache &&
        zip -9 -r lambda_function.zip lambda_function.rb vendor app config lib &&
        aws lambda update-function-code --function-name  arn:aws:lambda:us-east-1:247246293844:function:SaveToNeo4jDB --zip-file fileb://lambda_function.zip"

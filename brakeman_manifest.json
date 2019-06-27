@@ -3,9 +3,9 @@
     "app_path": "/lambda_docker",
     "rails_version": "4.x",
     "security_warnings": 0,
-    "start_time": "2019-06-26 22:13:18 +0000",
-    "end_time": "2019-06-26 22:13:18 +0000",
-    "duration": 0.087641821,
+    "start_time": "2019-06-27 17:02:50 +0000",
+    "end_time": "2019-06-27 17:02:51 +0000",
+    "duration": 0.172639767,
     "checks_performed": [
       "BasicAuth",
       "BasicAuthTimingAttack",
@@ -74,7 +74,7 @@
       "YAMLParsing"
     ],
     "number_of_controllers": 0,
-    "number_of_models": 12,
+    "number_of_models": 13,
     "number_of_templates": 0,
     "ruby_version": "2.5.0",
     "brakeman_version": "4.5.1"
