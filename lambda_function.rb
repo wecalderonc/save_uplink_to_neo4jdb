@@ -3,7 +3,12 @@ require './config/application.rb'
 #Default handler for aws lambdas
 module Handler
   def self.lambda_handler(event:, context:)
-    p SaveUplinks.new.execute(event)
+    result = SaveUplinks.new.execute(event)
+    if result.success?
+      result.success
+    else
+      result.failure
+    end
   end
 end
 
