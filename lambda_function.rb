@@ -3,25 +3,28 @@ require './config/application.rb'
 #Default handler for aws lambdas
 module Handler
   def self.lambda_handler(event:, context:)
-    SaveUplinks.new.execute(event)
+    result = SaveUplinks.new.execute(event)
+    if result.success?
+      result.success
+    else
+      result.failure
+    end
   end
 end
 
 event = {
-      params: {
-        "state": {
-          "reported": {
-            "device":"2BEE82",
-            "data":"006704300406702000010000",
-            "time":"1548277798",
-            "snr":"16.32",
-            "station":"146A",
-            "avgSnr":"18.47",
-            "lat":"5.0",
-            "lng":"-74.0",
-            "rssi":"-111.00",
-            "seqNumber":"77"
-          }
+      "state": {
+        "reported": {
+          "device":"2BEE82",
+          "data":"006704300406702000010000",
+          "time":"1548277798",
+          "snr":"16.32",
+          "station":"146A",
+          "avgSnr":"18.47",
+          "lat":"5.0",
+          "lng":"-74.0",
+          "rssi":"-111.00",
+          "seqNumber":"77"
         }
       }
     }

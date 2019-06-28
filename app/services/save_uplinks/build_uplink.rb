@@ -7,7 +7,7 @@ class SaveUplinks::BuildUplink
   include Dry::Transaction::Operation
 
   def call(input)
-    reported = input[:params][:state][:reported]
+    reported = input[:state][:reported]
     uplink_params = build_uplink(reported, input[:thing])
     uplink = Uplink.new(uplink_params)
     if uplink.valid?

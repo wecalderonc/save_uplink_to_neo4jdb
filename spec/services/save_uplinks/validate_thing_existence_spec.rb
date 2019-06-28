@@ -7,11 +7,9 @@ RSpec.describe SaveUplinks::ValidateThingExistence do
     let(:thing) { create(:thing) }
     let(:input)  {
       {
-        params:{
-          "state":{
-            "reported":{
-              "device": thing.name
-            }
+        "state":{
+          "reported":{
+            "device": thing.name
           }
         }
       }
@@ -20,11 +18,9 @@ RSpec.describe SaveUplinks::ValidateThingExistence do
     context "When the device reported from sigfox doesn't exist" do
       it "Should return a Failure response" do
         input = {
-          params: {
-            "state":{
-              "reported":{
-                "device":"X-DEVICE"
-              }
+          "state":{
+            "reported":{
+              "device":"X-DEVICE"
             }
           }
         }
