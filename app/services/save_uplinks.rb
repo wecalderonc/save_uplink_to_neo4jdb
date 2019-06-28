@@ -19,7 +19,7 @@ class SaveUplinks
   private
 
   def parse_data(input)
-    data = input[:params][:state][:reported][:data]
+    data = input[:state][:reported][:data]
     messages = split_message(data)
     input.merge(messages: messages)
   end

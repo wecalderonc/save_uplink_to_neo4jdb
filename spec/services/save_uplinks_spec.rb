@@ -7,20 +7,18 @@ RSpec.describe SaveUplinks do
 
     let(:input)  {
       {
-        params: {
-          "state": {
-            "reported": {
-              "device": thing.name,
-              "data":"00670430080670200001ascd",
-              "time":"1548277798",
-              "snr":"16.32",
-              "station":"146A",
-              "avgSnr":"18.47",
-              "lat":"5.0",
-              "lng":"-74.0",
-              "rssi":"-111.00",
-              "seqNumber":"77"
-            }
+        "state": {
+          "reported": {
+            "device": thing.name,
+            "data":"00670430080670200001ascd",
+            "time":"1548277798",
+            "snr":"16.32",
+            "station":"146A",
+            "avgSnr":"18.47",
+            "lat":"5.0",
+            "lng":"-74.0",
+            "rssi":"-111.00",
+            "seqNumber":"77"
           }
         }
       }
@@ -36,28 +34,28 @@ RSpec.describe SaveUplinks do
 
     context "When the 'validate_input' operation fails" do
       it "Should return a Failure response" do
-        input[:params].delete(:state)
+        input.delete(:state)
         response = subject.execute(input)
 
         expect(response).to be_failure
-        expect(response.failure[:error]).to eq({:params=>{:state=>["is missing"]}})
+        expect(response.failure[:error]).to eq({:state=>["is missing"]})
       end
     end
 
     context "When the 'validate_input' operation fails" do
       it "Should return a Failure response" do
-        input[:params][:state][:reported][:lng] = nil
+        input[:state][:reported][:lng] = nil
         response = subject.execute(input)
 
         expect(response).to be_failure
-        expect(response.failure[:error][:params][:state][:reported][:lng]).to eq(["must be filled"])
+        expect(response.failure[:error][:state][:reported][:lng]).to eq(["must be filled"])
       end
     end
 
     context "When the 'validate_thing_existence' operation fails" do
       it "Should return a Failure response" do
 
-        input[:params][:state][:reported][:device] = "nonexistencedevice"
+        input[:state][:reported][:device] = "nonexistencedevice"
         response = subject.execute(input)
 
         expect(response).to be_failure
@@ -68,11 +66,11 @@ RSpec.describe SaveUplinks do
     context "When the 'validate_thing_existence' operation fails" do
       it "Should return a Failure response" do
 
-        input[:params][:state][:reported][:data] = "123"
+        input[:state][:reported][:data] = "123"
         response = subject.execute(input)
 
         expect(response).to be_failure
-        expect(response.failure[:error][:params][:state][:reported][:data]).to eq(["length must be 24"])
+        expect(response.failure[:error][:state][:reported][:data]).to eq(["length must be 24"])
       end
     end
   end

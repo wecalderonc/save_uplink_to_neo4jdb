@@ -8,23 +8,20 @@ RSpec.describe SaveUplinks::SaveMessagesInDB do
     let(:uplink) { build(:uplink) }
     let(:input)  {
       {
-        params:
+        "state":
         {
-          "state":
+          "reported":
           {
-            "reported":
-            {
-              "device":"2BEE82",
-              "data":"00670430080670200001ascd",
-              "time":"1548277798",
-              "snr":"16.32",
-              "station":"146A",
-              "avgSnr":"18.47",
-              "lat":"5.0",
-              "lng":"-74.0",
-              "rssi":"-111.00",
-              "seqNumber":"77"
-            }
+            "device":"2BEE82",
+            "data":"00670430080670200001ascd",
+            "time":"1548277798",
+            "snr":"16.32",
+            "station":"146A",
+            "avgSnr":"18.47",
+            "lat":"5.0",
+            "lng":"-74.0",
+            "rssi":"-111.00",
+            "seqNumber":"77"
           }
         },
         thing: thing,

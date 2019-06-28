@@ -5,7 +5,7 @@ class SaveUplinks::ValidateThingExistence
   include Dry::Transaction::Operation
 
   def call(input)
-    device = input[:params][:state][:reported][:device]
+    device = input[:state][:reported][:device]
     thing = Thing.find_by(name: device)
     if thing.present?
       Success input.merge(thing: thing)
