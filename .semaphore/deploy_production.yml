@@ -33,5 +33,8 @@ blocks:
             - mv .env.prod save_uplink_to_neo4jdb/
             - cd save_uplink_to_neo4jdb/
             - echo $DOCKER_PASSWORD | docker login --username "$DOCKER_USERNAME" --password-stdin
-            - docker run -it --rm -v "$PWD":/var/task lambci/lambda:build-ruby2.5 bundle install --without test development
+            - docker run -it --rm -v "$PWD":/var/task lambci/lambda:build-ruby2.5 bundle install --without test development --path vendor/bundle
+            - ls
+            - cd vendor/bundle/ruby/2.5.0/
+            - ls
             - docker-compose run update
