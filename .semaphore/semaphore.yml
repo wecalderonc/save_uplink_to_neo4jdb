@@ -29,7 +29,7 @@ blocks:
       jobs:
         - name: rspec
           commands:
-            - git clone -b $SEMAPHORE_GIT_BRANCH git@github.com:ZonaWiki/save_uplink_to_neo4jdb.git
+            - git clone -b $SEMAPHORE_GIT_BRANCH git@github.com:devsprocibernetica/save_uplink_to_neo4jdb.git
             - mv .env.test save_uplink_to_neo4jdb/
             - cd save_uplink_to_neo4jdb/
             - pwd
