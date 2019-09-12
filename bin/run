@@ -4,6 +4,3 @@ service neo4j start
 sleep 5
 bundle
 rake neo4j:migrate
-rspec
-chmod +x bin/shot
-bin/shot

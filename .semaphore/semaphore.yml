@@ -27,7 +27,7 @@ blocks:
         - name: dockerhub-access
         - name: neo4j-db-access
       jobs:
-        - name: rspec
+        - name: Rspec
           commands:
             - git clone -b $SEMAPHORE_GIT_BRANCH git@github.com:devsprocibernetica/save_uplink_to_neo4jdb.git
             - mv .env.test save_uplink_to_neo4jdb/
@@ -36,6 +36,13 @@ blocks:
             - ls -alh
             - echo $DOCKER_PASSWORD | docker login --username "$DOCKER_USERNAME" --password-stdin
             - docker-compose run test
+        - name: Code Quality
+          commands:
+            - git clone -b $SEMAPHORE_GIT_BRANCH git@github.com:devsprocibernetica/save_uplink_to_neo4jdb.git
+            - cd save_uplink_to_neo4jdb/
+            - bundle
+            - chmod +x bin/shot
+            - bin/shot
 promotions:
   - name: Production Deploy
     pipeline_file: deploy_production.yml
