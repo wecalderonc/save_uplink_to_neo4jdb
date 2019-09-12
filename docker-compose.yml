@@ -1,7 +1,7 @@
 version: '3'
 services:
   test:
-    image: zonawik1/save_uplink_to_neo4jdb:1
+    image: devsproci/save_uplink_to_neo4jdb:1
     environment:
       - APP_ENV=test
     command:
@@ -20,7 +20,7 @@ services:
     stdin_open: true
 
   update:
-     image: zonawik1/save_uplink_to_neo4jdb:1
+     image: devsproci/save_uplink_to_neo4jdb:1
      environment:
       - APP_ENV=prod
      command: >
