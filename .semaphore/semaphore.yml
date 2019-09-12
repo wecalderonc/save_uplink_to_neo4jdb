@@ -38,8 +38,10 @@ blocks:
             - docker-compose run test
         - name: Code Quality
           commands:
+            - git clone -b $SEMAPHORE_GIT_BRANCH git@github.com:devsprocibernetica/save_uplink_to_neo4jdb.git
+            - cd save_uplink_to_neo4jdb/
             - bundle
-            - chmod -x bin/shot
+            - chmod +x bin/shot
             - bin/shot
 promotions:
   - name: Production Deploy
