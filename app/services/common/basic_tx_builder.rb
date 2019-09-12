@@ -1,3 +1,5 @@
+require './app/services/common/tx_master_builder.rb'
+
 module Common
   BasicTxBuilder = -> action_type, object_type do
     Common::TxMasterBuilder.new do

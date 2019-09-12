@@ -1,4 +1,6 @@
 require 'dry/transaction/operation'
+require './app/services/common/operations.rb'
+require './app/services/common/container.rb'
 
 class Common::Operations::BuildParams
   include Dry::Transaction::Operation

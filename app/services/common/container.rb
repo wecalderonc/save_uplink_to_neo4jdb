@@ -1,3 +1,5 @@
+require "dry/auto_inject"
+
 module Common
   class Container
     extend Dry::Container::Mixin
