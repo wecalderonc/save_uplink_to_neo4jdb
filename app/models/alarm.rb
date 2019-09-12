@@ -25,6 +25,6 @@ class Alarm < BaseModel
 
   def create_alarm_type
     name = classify(self.last_digit)
-    AlarmType.create(name: name, value: last_digit, type: "hardware", alarm: self)
+    AlarmType.create(name: name, value: last_digit, type: :hardware, alarm: self)
   end
 end

@@ -5,7 +5,13 @@ class AlarmType < BaseModel
   property :type,   type: String
 
   validates :name,  presence: true
-  validates :type,  presence: true
+
+  TYPES = [
+    :hardware,
+    :software
+  ]
+
+  validates :type, presence: true, inclusion: { in: TYPES.map(&:to_s) }
 
   has_one :in, :alarm, type: :TYPE
 
