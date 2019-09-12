@@ -14,8 +14,6 @@ services:
         bundle
         rake neo4j:migrate
         rspec
-        chmod +x bin/shot
-        bin/shot
     volumes:
       - .:/lambda_docker
     tty: true
