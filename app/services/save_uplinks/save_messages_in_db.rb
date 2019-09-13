@@ -7,11 +7,16 @@ class SaveUplinks::SaveMessagesInDb
   def call(input)
     possible_errors = input[:new_messages].map do |message|
       bit_descriptor = message[0]
+
       result = uplink_attributes[bit_descriptor].(message[1..10], input[:uplink])
+
       if not result.save
         Errors.general_error(result.errors.messages, self.class)
+      else
+        { message: "Messages Saved Successfully", bit_descriptor: bit_descriptor }
       end
     end
+
     Success(results: possible_errors.compact)
   end
 
