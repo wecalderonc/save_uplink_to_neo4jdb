@@ -4,8 +4,8 @@ module Errors
     { status: status, message: message }
   end
 
-  def self.general_error(message, location)
-    { error: message, location: location }
+  def self.general_error(message, location, extra: {})
+    { error: message, location: location, extra: extra }
   end
 
   def self.model_error(error, model, extra: {})

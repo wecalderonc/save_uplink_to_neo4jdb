@@ -26,7 +26,7 @@ RSpec.describe SaveUplinks::Execute do
 
     context "When all the operations are successful" do
       it "Should return a Success response" do
-        response = subject.execute(input)
+        response = subject.(input)
 
         expect(response).to be_success
       end
@@ -35,7 +35,7 @@ RSpec.describe SaveUplinks::Execute do
     context "When the 'validate_input' operation fails" do
       it "Should return a Failure response" do
         input.delete(:state)
-        response = subject.execute(input)
+        response = subject.(input)
 
         expect(response).to be_failure
         expect(response.failure[:error]).to eq({:state=>["is missing"]})
@@ -45,7 +45,7 @@ RSpec.describe SaveUplinks::Execute do
     context "When the 'validate_input' operation fails" do
       it "Should return a Failure response" do
         input[:state][:reported][:lng] = nil
-        response = subject.execute(input)
+        response = subject.(input)
 
         expect(response).to be_failure
         expect(response.failure[:error][:state][:reported][:lng]).to eq(["must be filled"])
@@ -56,7 +56,7 @@ RSpec.describe SaveUplinks::Execute do
       it "Should return a Failure response" do
 
         input[:state][:reported][:device] = "nonexistencedevice"
-        response = subject.execute(input)
+        response = subject.(input)
 
         expect(response).to be_failure
         expect(response.failure[:error]).to eq("Device doesn't exist in BD")
@@ -67,7 +67,7 @@ RSpec.describe SaveUplinks::Execute do
       it "Should return a Failure response" do
 
         input[:state][:reported][:data] = "123"
-        response = subject.execute(input)
+        response = subject.(input)
 
         expect(response).to be_failure
         expect(response.failure[:error][:state][:reported][:data]).to eq(["length must be 24"])

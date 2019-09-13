@@ -1,7 +1,7 @@
 require 'dry/transaction/operation'
 require './lib/errors.rb'
 
-class SaveUplinks::SaveMessagesInDB
+class SaveUplinks::SaveMessagesInDb
   include Dry::Transaction::Operation
 
   def call(input)

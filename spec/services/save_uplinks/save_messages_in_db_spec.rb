@@ -1,7 +1,7 @@
 require './config/application.rb'
 require './app/services/save_uplinks/save_messages_in_db.rb'
 
-RSpec.describe SaveUplinks::SaveMessagesInDB do
+RSpec.describe SaveUplinks::SaveMessagesInDb do
 
   describe "#call" do
     let(:thing) { build(:thing) }
