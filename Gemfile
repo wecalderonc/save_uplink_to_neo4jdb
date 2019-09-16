@@ -19,5 +19,5 @@ group :development,:test do
   gem 'simplecov', require: false
   gem 'simplecov-console', require: false
   gem 'brakeman'
-  gem 'faker'
+  gem 'faker',  '~> 2.1.2'
 end

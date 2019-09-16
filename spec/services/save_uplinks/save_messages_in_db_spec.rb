@@ -1,7 +1,7 @@
 require './config/application.rb'
 require './app/services/save_uplinks/save_messages_in_db.rb'
 
-RSpec.describe SaveUplinks::SaveMessagesInDB do
+RSpec.describe SaveUplinks::SaveMessagesInDb do
 
   describe "#call" do
     let(:thing) { build(:thing) }
@@ -34,8 +34,29 @@ RSpec.describe SaveUplinks::SaveMessagesInDB do
       it "Should return a Success response" do
         response = subject.call(input)
 
+        expected_response =
+
+        [
+          {
+            :bit_descriptor=>"a",
+            :message=>"Messages Saved Successfully",
+          },
+          {
+            :bit_descriptor=>"9",
+            :message=>"Messages Saved Successfully",
+          },
+          {
+            :bit_descriptor=>"3",
+            :message=>"Messages Saved Successfully",
+          },
+          {
+            :bit_descriptor=>"f",
+            :message=>"Messages Saved Successfully",
+          }]
+
+
         expect(response).to be_success
-        expect(response.success[:results]).to eq([])
+        expect(response.success[:results]).to eq(expected_response)
       end
     end
 
@@ -45,8 +66,8 @@ RSpec.describe SaveUplinks::SaveMessagesInDB do
         response = subject.call(input)
 
         expect(response).to be_success
-        expect(response.success[:results].size).to eq(1)
-        expect(response.success[:results][0][:error]).to eq({:value=>["can't be blank"]})
+        expect(response.success[:results].size).to eq(4)
+        expect(response.success[:results][1][:error]).to eq({:value=>["can't be blank"]})
       end
     end
 
@@ -56,8 +77,9 @@ RSpec.describe SaveUplinks::SaveMessagesInDB do
         response = subject.call(input)
 
         expect(response).to be_success
-        expect(response.success[:results].size).to eq(2)
-        expect(response.success[:results][0][:error]).to eq({:value=>["can't be blank"]})
+        expect(response.success[:results].size).to eq(4)
+        expect(response.success[:results][1][:error]).to eq({:value=>["can't be blank"]})
+        expect(response.success[:results][2][:error]).to eq({:value=>["can't be blank"]})
       end
     end
 
@@ -67,8 +89,10 @@ RSpec.describe SaveUplinks::SaveMessagesInDB do
         response = subject.call(input)
 
         expect(response).to be_success
-        expect(response.success[:results].size).to eq(3)
-        expect(response.success[:results][0][:error]).to eq({:value=>["can't be blank"]})
+        expect(response.success[:results].size).to eq(4)
+        expect(response.success[:results][1][:error]).to eq({:value=>["can't be blank"]})
+        expect(response.success[:results][2][:error]).to eq({:value=>["can't be blank"]})
+        expect(response.success[:results][3][:error]).to eq({:value=>["can't be blank"]})
       end
     end
 
@@ -80,6 +104,9 @@ RSpec.describe SaveUplinks::SaveMessagesInDB do
         expect(response).to be_success
         expect(response.success[:results].size).to eq(4)
         expect(response.success[:results][0][:error]).to eq({:value=>["can't be blank"]})
+        expect(response.success[:results][1][:error]).to eq({:value=>["can't be blank"]})
+        expect(response.success[:results][2][:error]).to eq({:value=>["can't be blank"]})
+        expect(response.success[:results][3][:error]).to eq({:value=>["can't be blank"]})
       end
     end
   end
