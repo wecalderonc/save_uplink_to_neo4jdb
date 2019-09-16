@@ -1,6 +1,6 @@
 require 'dry/transaction/operation'
 
-class Alarms::Classify
+class SaveUplinks::AlarmTypes::Classify
   include Dry::Transaction::Operation
 
   def call(input)

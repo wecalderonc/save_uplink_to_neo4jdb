@@ -1,0 +1,2 @@
+module AlarmTypes
+end
