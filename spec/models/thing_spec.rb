@@ -10,6 +10,8 @@ RSpec.describe Thing, :type => :model do
   it { is_expected.to define_property :company_id, :String }
   it { is_expected.to define_property :longitude, :Float }
   it { is_expected.to define_property :latitude, :Float }
+  it { is_expected.to define_property :latitude, :Float }
+  it { is_expected.to define_property :flow_per_minute, :Integer }
 
   it { is_expected.to have_one(:uplinks).with_direction(:out) }
   it { is_expected.to have_one(:locates).with_direction(:out) }
@@ -30,6 +32,7 @@ RSpec.describe Thing, :type => :model do
         :latitude => ["can't be blank"],
         :longitude => ["can't be blank"],
         :company_id=>["can't be blank"],
+        :flow_per_minute=>["can't be blank"]
       }
 
       expect(subject.errors.messages).to eq(expected_errors)

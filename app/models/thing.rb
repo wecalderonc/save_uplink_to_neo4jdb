@@ -9,12 +9,13 @@ class Thing
   property :latitude, type: Float
   property :longitude, type: Float
   property :units
+  property :flow_per_minute, type: Integer
 
   serialize :units
 
   VALID_ACTIONS = [:scheduled_cut, :restore_supply, :instant_cut, :restore_supply_with_scheduled_cut]
   VALID_UPDATE_TYPES = [:desired, :reported]
-  REQUIRED_FIELDS = [:name, :status, :pac, :company_id, :longitude, :latitude]
+  REQUIRED_FIELDS = [:name, :status, :pac, :company_id, :longitude, :latitude, :flow_per_minute]
 
   validates_presence_of REQUIRED_FIELDS
 
