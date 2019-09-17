@@ -4,8 +4,10 @@ require './app/validators.rb'
 
 module Validators::AlarmTypes
   CreateSchema = Dry::Validation.Schema do
-    required(:name).filled(type?: String)
-    required(:value).filled(type?: Integer)
     required(:type).filled(type?: String)
+
+    validate(valid_alarm: :alarm) do |alarm|
+      alarm.valid?
+    end
   end
 end

@@ -10,7 +10,7 @@ class SaveUplinks::AlarmTypes::Classify::Save
 
     alarm_type = AlarmType.new(name: name, value: last_digit, type: :hardware, alarm: alarm)
 
-    if alarm_type.save?
+    if alarm_type.save
       alarm.alarm_type = alarm_type
       Success alarm
     else
