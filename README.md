@@ -24,7 +24,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 A step by step series of examples that tell you how to get a development env running
 
-  1. Set the environment variables .evn.prod and .env.test inside the / of the project. 
+  1. Set the environment variables .evn.prod and .env.test inside the / of the project.
 
 ### Running the app
 
@@ -35,7 +35,8 @@ A step by step series of examples that tell you how to get a development env run
 ## Test Suite
 
   - Run `sudo docker-compose run test` for Ruby tests
-  
+  - Inside run the script `bin/run` to initialize Neo4j BD and install gems.
+
 ## Deployment
 
   - Run `sudo docker-compose run update` for deployment
