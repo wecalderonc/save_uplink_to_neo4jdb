@@ -4,11 +4,13 @@ class Alarms::Classify
   include Dry::Transaction::Operation
 
   def call(input)
+    p "uplink"
+    p uplink = input[:object].uplink
 
     options = {
-      accumulator: -> input { accumulator_alarm_classify(input) },
-      alarm: -> input { alarm_classify(input) },
-      battery_level: -> input { battery_level_alarm_classify(input)}
+      accumulator:      -> input { accumulator_alarm_classify(input) },
+      alarm:            -> input { classify_alarm(input) },
+      battery_level:    -> input { battery_level_alarm_classify(input)}
     }
 
     options.default = lambda { Success input }
@@ -22,27 +24,44 @@ class Alarms::Classify
     alarm.value[-1].to_i
   end
 
-  def alarm_classify(input)
+  def classify_alarm(input)
     p "inside alarm classify"
     alarm = input[:object]
     last_digit = last_digit(alarm)
+
     if AlarmType::HARDWARE_ALARMS.include?(last_digit)
-      Success input.merge(name: AlarmType::HARDWARE_ALARMS[last_digit], last_digit: last_digit)
+      name = AlarmType::HARDWARE_ALARMS[last_digit]
+      Success input.merge(alarm_type: AlarmType.new(name: name, value: last_digit, type: input[:type], alarm: alarm))
     else
-      Success input.merge(name: :does_not_apply, last_digit: last_digit)
+      name = :does_not_apply
+      Success input.merge(alarm_type: AlarmType.new(name: name, value: last_digit, type: input[:type], alarm: alarm))
     end
   end
 
   def battery_level_alarm_classify(input)
     p "inside battery_level_alarm_classify"
-    p input
-    Success input
+    battery_level = input[:object]
+    last_digit = battery_level.value[-1].to_i
+
+    if last_digit.eql?(1)
+      alarm_name = AlarmType::SOFTWARE_ALARMS[3]
+      p new_alarm = Alarm.create(value: nil, uplink: battery_level.uplink)
+      Success input.merge(alarm_type: AlarmType.new(name: alarm_name, value: last_digit, type: input[:type], alarm: new_alarm))
+    else
+      Success input
+    end
   end
 
 
   def accumulator_alarm_classify(input)
     p "inside accumulator_level_alarm_classify"
-    p input
-    Success input
+    accumulator = input[:object]
+
+    if "calculos y metodos de jeisson"
+      p new_alarm = Alarm.create(value: nil, uplink: accumulator.uplink)
+      Success input
+    else
+      Success input
+    end
   end
 end

@@ -23,7 +23,7 @@ class AlarmType < BaseModel
 
   SOFTWARE_ALARMS = {
     1 => :unexpected_dump,
-    2 => :impossible_consumpsion,
+    2 => :impossible_consumption,
     3 => :low_battery,
     4 => :stuck_valve
   }
