@@ -11,7 +11,7 @@ RSpec.describe Handler do
       "state": {
           "reported": {
             "device":thing.name,
-            "data":"00670430080670200001ascd",
+            "data":"0067b000130670200001ascd",
             "time":"1548277798",
             "snr":"16.32",
             "station":"146A",

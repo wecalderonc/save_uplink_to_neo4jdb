@@ -20,4 +20,11 @@ class AlarmType < BaseModel
     2 => :induced_site_alarm,
     3 => :sos
   }
+
+  SOFTWARE_ALARMS = {
+    1 => :unexpected_dump,
+    2 => :impossible_consumpsion,
+    3 => :low_battery,
+    4 => :stuck_valve
+  }
 end

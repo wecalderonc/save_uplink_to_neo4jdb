@@ -6,9 +6,10 @@ class SaveUplinks::SaveMessagesInDb
 
   def call(input)
     possible_errors = input[:new_messages].map do |message|
-      bit_descriptor = message[0]
+      p bit_descriptor = message[0]
 
-      result = uplink_attributes[bit_descriptor].(message[1..10], input[:uplink])
+      p "resultttttttt"
+      p result = uplink_attributes[bit_descriptor].(message[1..10], input[:uplink]).success
 
       if not result.save
         Errors.general_error(result.errors.messages, self.class)
@@ -24,8 +25,8 @@ class SaveUplinks::SaveMessagesInDb
 
   def uplink_attributes
     sensors = {
-      "2"=> lambda { |value, uplink| Accumulator.new(value: value, uplink: uplink) },
-      "3"=> lambda { |value, uplink| BatteryLevel.new(value: value, uplink: uplink) },
+      "2"=> lambda { |value, uplink| Alarms::Create::Execute.new.(object: Accumulator.new(value: value, uplink: uplink), model: :accumulator, type: "software") },
+      "3"=> lambda { |value, uplink| Alarms::Create::Execute.new.(object: BatteryLevel.new(value: value, uplink: uplink), model: :battery_level, type: "software") },
       "4"=> lambda { |value, uplink| ValvePosition.new(value: value, uplink: uplink) },
       "5"=> lambda { |value, uplink| TimeUplink.new(value: value, uplink: uplink) },
       "6"=> lambda { |value, uplink| UplinkBDownlink.new(value: value, uplink: uplink) },
@@ -33,7 +34,7 @@ class SaveUplinks::SaveMessagesInDb
       "8"=> lambda { |value, uplink| Sensor2.new(value: value, uplink: uplink) },
       "9"=> lambda { |value, uplink| Sensor3.new(value: value, uplink: uplink) },
       "a"=> lambda { |value, uplink| Sensor4.new(value: value, uplink: uplink) },
-      "b"=> lambda { |value, uplink| Alarm.new(value: value, uplink: uplink) }
+      "b"=> lambda { |value, uplink| Alarms::Create::Execute.new.(object: Alarm.new(value: value, uplink: uplink), model: :alarm, type: "hardware") }
     }
 
     sensors.default = lambda { |_, _| Struct.new(:save).new(true) }
