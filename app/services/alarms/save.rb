@@ -9,8 +9,8 @@ class Alarms::Save
 
     options = {
       accumulator: -> input { save_accumulator_alarm_type(input) },
-      alarm: -> input { save_alarm_type_for_alarm(input) },
-      battery_level: -> input { save_battery_level_alarm_type(input) }
+      alarm: -> input { save_alarm_type(input) },
+      battery_level: -> input { save_alarm_type(input) }
     }
 
     options.default = lambda { Success input }
@@ -20,29 +20,20 @@ class Alarms::Save
 
   private
 
-  def save_alarm_type_for_alarm(input)
-    p "inside save alarm type for alamr"
-    input[:object]
-    # name = input[:name]
-    # alarm = input[:alarm]
+  def save_alarm_type(input)
+    p "inside save alarm type"
+    alarm_type = input[:alarm_type]
 
-    # alarm_type = AlarmType.new(name: name, value: input[:last_digit], type: input[:type], alarm: alarm)
-
-    # if alarm_type.save
-    #   alarm.alarm_type = alarm_type
-    #   Success alarm
-    # else
-    #   Failure Errors.general_error(alarm_type.errors.messages, self.class)
-    # end
+    if alarm_type.save
+      Success input[:object]
+    else
+      Failure Errors.general_error(alarm_type.errors.messages, self.class)
+      Success input[:object]
+    end
   end
 
   def save_accumulator_alarm_type(input)
     p "inside save alarm type for accumulator"
-    input[:object]
-  end
-
-  def save_battery_level_alarm_type(input)
-    p "inside save alarm type for battery_level"
     input[:object]
   end
 end

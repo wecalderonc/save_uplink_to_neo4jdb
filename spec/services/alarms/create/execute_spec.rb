@@ -1,8 +1,8 @@
 require './config/application.rb'
-require './app/services/save_uplinks/alarm_types/execute.rb'
-require './app/services/save_uplinks/alarm_types/save.rb'
+require './app/services/alarms/create/execute.rb'
 
-RSpec.describe SaveUplinks::AlarmTypes::Execute do
+
+RSpec.describe Alarms::Create::Execute do
 
   describe "#call" do
     let(:alarm) { build(:alarm) }

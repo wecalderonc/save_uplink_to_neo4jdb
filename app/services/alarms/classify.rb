@@ -58,8 +58,11 @@ class Alarms::Classify
     accumulator = input[:object]
 
     if "calculos y metodos de jeisson"
+      p "inside calculos y meotods del jeison"
+      alarm_name = "lo que diga jei jei"
       p new_alarm = Alarm.create(value: nil, uplink: accumulator.uplink)
-      Success input
+      p new_alarm.uplink
+      Success input.merge(alarm_type: AlarmType.new(name: alarm_name, value: nil, type: input[:type], alarm: new_alarm))
     else
       Success input
     end
