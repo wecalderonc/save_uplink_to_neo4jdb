@@ -6,10 +6,9 @@ class SaveUplinks::SaveMessagesInDb
 
   def call(input)
     possible_errors = input[:new_messages].map do |message|
-      p bit_descriptor = message[0]
+      bit_descriptor = message[0]
 
-      p "resultttttttt"
-      p result = uplink_attributes[bit_descriptor].(message[1..10], input[:uplink]).success
+      result = uplink_attributes[bit_descriptor].(message[1..10], input[:uplink]).success
 
       if not result.save
         Errors.general_error(result.errors.messages, self.class)
@@ -23,7 +22,7 @@ class SaveUplinks::SaveMessagesInDb
 
   private
 
-  #TODO
+  #TODO CHANGE CODE FLOW
   def uplink_attributes
     sensors = {
       "2"=> lambda { |value, uplink| Alarms::Create::Execute.new.(object: Accumulator.new(value: value, uplink: uplink), model: :accumulator, type: "software") },

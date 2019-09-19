@@ -4,8 +4,7 @@ class Alarms::Classify
   include Dry::Transaction::Operation
 
   def call(input)
-    p "uplink"
-    p uplink = input[:object].uplink
+    uplink = input[:object].uplink
 
     options = {
       accumulator:      -> input { accumulator_alarm_classify(input) },
@@ -20,33 +19,25 @@ class Alarms::Classify
 
   private
 
-  def last_digit(alarm)
-    alarm.value[-1].to_i
+  def last_digit(object)
+    object.value[-1].to_i
   end
 
   def classify_alarm(input)
-    p "inside alarm classify"
     alarm = input[:object]
     last_digit = last_digit(alarm)
-
-    if AlarmType::HARDWARE_ALARMS.include?(last_digit)
-      name = AlarmType::HARDWARE_ALARMS[last_digit]
-      Success input.merge(alarm_type: AlarmType.new(name: name, value: last_digit, type: input[:type], alarm: alarm))
-    else
-      name = :does_not_apply
-      Success input.merge(alarm_type: AlarmType.new(name: name, value: last_digit, type: input[:type], alarm: alarm))
-    end
+    alarm_name = AlarmType::HARDWARE_ALARMS[last_digit] || :does_not_apply
+    Success input.merge(alarm_name: alarm_name)
   end
 
   def battery_level_alarm_classify(input)
-    p "inside battery_level_alarm_classify"
     battery_level = input[:object]
-    last_digit = battery_level.value[-1].to_i
+    last_digit = last_digit(battery_level)
 
     if last_digit.eql?(1)
       alarm_name = AlarmType::SOFTWARE_ALARMS[3]
-      p new_alarm = Alarm.create(value: nil, uplink: battery_level.uplink)
-      Success input.merge(alarm_type: AlarmType.new(name: alarm_name, value: last_digit, type: input[:type], alarm: new_alarm))
+
+      Success input.merge(alarm_name: alarm_name)
     else
       Success input
     end
@@ -54,15 +45,12 @@ class Alarms::Classify
 
 
   def accumulator_alarm_classify(input)
-    p "inside accumulator_level_alarm_classify"
     accumulator = input[:object]
 
     if "calculos y metodos de jeisson"
-      p "inside calculos y meotods del jeison"
       alarm_name = "lo que diga jei jei"
-      p new_alarm = Alarm.create(value: nil, uplink: accumulator.uplink)
-      p new_alarm.uplink
-      Success input.merge(alarm_type: AlarmType.new(name: alarm_name, value: nil, type: input[:type], alarm: new_alarm))
+
+      Success input.merge(alarm_name: alarm_name)
     else
       Success input
     end

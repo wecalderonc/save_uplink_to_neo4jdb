@@ -6,10 +6,7 @@ class AlarmType < BaseModel
 
   validates :name,  presence: true
 
-  TYPES = [
-    :hardware,
-    :software
-  ]
+  TYPES = [ :hardware, :software ]
 
   validates :type, presence: true, inclusion: { in: TYPES.map(&:to_s) }
 
@@ -20,6 +17,8 @@ class AlarmType < BaseModel
     2 => :induced_site_alarm,
     3 => :sos
   }
+
+  HARDWARE_ALARMS.default =
 
   SOFTWARE_ALARMS = {
     1 => :unexpected_dump,

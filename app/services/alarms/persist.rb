@@ -1,11 +1,9 @@
 require 'dry/transaction/operation'
 
-class Alarms::Save
+class Alarms::Persist
   include Dry::Transaction::Operation
 
   def call(input)
-    p "input en save"
-    p input
 
     options = {
       accumulator: -> input { save_accumulator_alarm_type(input) },
@@ -37,3 +35,11 @@ class Alarms::Save
     input[:object]
   end
 end
+
+
+
+
+
+AlarmType.new(name: name, value: last_digit, type: input[:type], alarm: alarm)
+AlarmType.new(name: alarm_name, value: last_digit, type: input[:type], alarm: new_alarm)
+AlarmType.new(name: alarm_name, value: nil, type: input[:type], alarm: new_alarm)
