@@ -1,4 +1,3 @@
-require './app/services/alarm_types.rb'
 require './app/services/alarms/classify.rb'
 require './app/services/alarms/persist.rb'
 require './app/services/alarms/generate_alarm.rb'

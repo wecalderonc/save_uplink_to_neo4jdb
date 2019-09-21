@@ -20,13 +20,14 @@ class Alarms::Persist
 
   def save_alarm_type(input)
     p "inside save alarm type"
+    p input
     alarm_type = input[:alarm_type]
 
-    if alarm_type.save
-      Success input[:object]
+    if alarm_type && alarm_type.save
+      input[:object]
     else
-      Failure Errors.general_error(alarm_type.errors.messages, self.class)
-      Success input[:object]
+      # Failure Errors.general_error(alarm_type.errors.messages, self.class)
+      input[:object]
     end
   end
 
