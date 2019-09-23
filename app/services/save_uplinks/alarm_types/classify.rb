@@ -16,7 +16,6 @@ class SaveUplinks::AlarmTypes::Classify
   private
 
   def last_digit(alarm)
-
     alarm.value[-1].to_i
   end
 end
