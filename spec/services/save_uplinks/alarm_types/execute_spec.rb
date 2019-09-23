@@ -22,9 +22,7 @@ RSpec.describe SaveUplinks::AlarmTypes::Execute do
 
     context "When the alarm don't have a type associated" do
       it "Should return a Failure response response" do
-        p input
         input.delete(:type)
-        p input
 
         response = subject.(input)
         expected_response = nil
