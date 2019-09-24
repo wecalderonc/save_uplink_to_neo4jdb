@@ -4,6 +4,8 @@ class Alarms::Persist
   include Dry::Transaction::Operation
 
   def call(input)
+    p input
+    p input[:model]
 
     options = {
       accumulator: -> input { save_accumulator_alarm_type(input) },
@@ -19,28 +21,36 @@ class Alarms::Persist
   private
 
   def save_alarm_type(input)
-    p "inside save alarm type"
-    p input
-    alarm_type = input[:alarm_type]
+    alarm_name = input[:alarm_name]
+    alarm = input[:alarm]
 
-    if alarm_type && alarm_type.save
+    if alarm_name
+      p AlarmType.create(name: alarm_name, value: input[:last_digit], type: input[:type], alarm: alarm)
       input[:object]
     else
-      # Failure Errors.general_error(alarm_type.errors.messages, self.class)
       input[:object]
     end
   end
 
   def save_accumulator_alarm_type(input)
-    p "inside save alarm type for accumulator"
-    input[:object]
+    accumulator_alarm_name = input[:accumulator_alarm_name]
+
+    if accumulator_alarm_name[:unexpected_dump]
+      p " alarmas"
+      p alarm = input[:alarm]
+      p alarm2 = input[:alarm2]
+      p " alarmas"
+      p AlarmType.create(name: :unexpected_dump, value: "0", type: input[:type], alarm: alarm)
+      p AlarmType.create(name: :imposible_consumption, value: "0", type: input[:type], alarm: alarm2)
+
+      input[:object]
+    elsif accumulator_alarm_name[:imposible_consumption]
+      alarm = input[:alarm]
+      p AlarmType.create(name: :imposible_consumption, value: "0", type: input[:type], alarm: alarm)
+
+      input[:object]
+    else
+      input[:object]
+    end
   end
 end
-
-
-
-
-
-AlarmType.new(name: name, value: last_digit, type: input[:type], alarm: alarm)
-AlarmType.new(name: alarm_name, value: last_digit, type: input[:type], alarm: new_alarm)
-AlarmType.new(name: alarm_name, value: nil, type: input[:type], alarm: new_alarm)

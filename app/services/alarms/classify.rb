@@ -27,7 +27,8 @@ class Alarms::Classify
     alarm = input[:object]
     last_digit = last_digit(alarm)
     alarm_name = AlarmType::HARDWARE_ALARMS[last_digit] || :does_not_apply
-    Success input.merge(alarm_name: alarm_name)
+
+    Success input.merge(alarm_name: alarm_name, last_digit: last_digit)
   end
 
   def battery_level_alarm_classify(input)
@@ -37,7 +38,7 @@ class Alarms::Classify
     if last_digit.eql?(1)
       alarm_name = AlarmType::SOFTWARE_ALARMS[3]
 
-      Success input.merge(alarm_name: alarm_name)
+      Success input.merge(alarm_name: alarm_name, last_digit: last_digit)
     else
       Success input
     end
@@ -48,9 +49,12 @@ class Alarms::Classify
     accumulator = input[:object]
 
     if "calculos y metodos de jeisson"
-      alarm_name = "lo que diga jei jei"
+      accumulator_alarm_name = {
+        unexpected_dump: true,
+        imposible_consumption: true
+      }
 
-      Success input.merge(alarm_name: alarm_name)
+      Success input.merge(accumulator_alarm_name: accumulator_alarm_name)
     else
       Success input
     end
