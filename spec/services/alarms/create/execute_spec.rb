@@ -8,7 +8,9 @@ RSpec.describe Alarms::Create::Execute do
     let(:alarm) { build(:alarm) }
     let(:input) {
       {
-        alarm: alarm, type: "hardware"
+        object: alarm,
+        type: "hardware",
+        model: :alarm
       }
     }
 
@@ -20,11 +22,11 @@ RSpec.describe Alarms::Create::Execute do
       end
     end
 
-    context "When the alarm don't have a type associated" do
+    context "When the validation step fails" do
       it "Should return a Failure response response" do
         input.delete(:type)
 
-        response = subject.(input)
+        p response = subject.(input)
         expected_response = nil
 
         expect(response).to be_failure

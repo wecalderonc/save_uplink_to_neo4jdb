@@ -35,11 +35,11 @@ RSpec.describe Handler do
           [
             {
               message: "Messages Saved Successfully",
-              bit_descriptor: "8"
+              bit_descriptor: "3"
             },
             {
               message: "Messages Saved Successfully",
-              bit_descriptor: "0"
+              bit_descriptor: "b"
             },
             {
               message: "Messages Saved Successfully",
