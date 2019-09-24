@@ -1,8 +1,8 @@
 require 'faker'
 
 FactoryBot.define do
-  factory :accumulator do
-    value { Faker::Number.hexadecimal(digits: 8) }
+  factory :battery_level do
+    value { Faker::Number.hexadecimal(digits: 4) }
 
     association :uplink, factory: :uplink
   end

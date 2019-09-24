@@ -4,8 +4,8 @@ class Alarms::Persist
   include Dry::Transaction::Operation
 
   def call(input)
-    p input
-    p input[:model]
+    input
+    input[:model]
 
     options = {
       accumulator: -> input { save_accumulator_alarm_type(input) },
@@ -25,8 +25,9 @@ class Alarms::Persist
     alarm = input[:alarm]
 
     if alarm_name
-      p AlarmType.create(name: alarm_name, value: input[:last_digit], type: input[:type], alarm: alarm)
-      input[:object]
+      AlarmType.create(name: alarm_name, value: input[:last_digit], type: input[:type], alarm: alarm)
+      p "por aquí con batter"
+      p input[:object]
     else
       input[:object]
     end
@@ -36,17 +37,16 @@ class Alarms::Persist
     accumulator_alarm_name = input[:accumulator_alarm_name]
 
     if accumulator_alarm_name[:unexpected_dump]
-      p " alarmas"
-      p alarm = input[:alarm]
-      p alarm2 = input[:alarm2]
-      p " alarmas"
-      p AlarmType.create(name: :unexpected_dump, value: "0", type: input[:type], alarm: alarm)
-      p AlarmType.create(name: :imposible_consumption, value: "0", type: input[:type], alarm: alarm2)
+      alarm = input[:alarm]
+      alarm2 = input[:alarm2]
+
+      AlarmType.create(name: :unexpected_dump, value: "0", type: input[:type], alarm: alarm)
+      AlarmType.create(name: :imposible_consumption, value: "0", type: input[:type], alarm: alarm2)
 
       input[:object]
     elsif accumulator_alarm_name[:imposible_consumption]
       alarm = input[:alarm]
-      p AlarmType.create(name: :imposible_consumption, value: "0", type: input[:type], alarm: alarm)
+      AlarmType.create(name: :imposible_consumption, value: "0", type: input[:type], alarm: alarm)
 
       input[:object]
     else

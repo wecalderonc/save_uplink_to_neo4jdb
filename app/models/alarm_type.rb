@@ -18,12 +18,11 @@ class AlarmType < BaseModel
     3 => :sos
   }
 
-  HARDWARE_ALARMS.default =
-
   SOFTWARE_ALARMS = {
     1 => :unexpected_dump,
     2 => :impossible_consumption,
     3 => :low_battery,
     4 => :stuck_valve
   }
+
 end

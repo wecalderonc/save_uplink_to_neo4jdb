@@ -4,10 +4,6 @@ class Alarms::GenerateAlarm
   include Dry::Transaction::Operation
 
   def call(input)
-    p "generate_alarm"
-    p input
-    p "generate_alarm"
-
     options = {
       accumulator: -> input { generate_accumulator_alarm(input) },
       alarm: -> input { generate_alarm(input) },
@@ -22,10 +18,11 @@ class Alarms::GenerateAlarm
   private
 
   def generate_alarm(input)
+    p "input en generate alarm"
     uplink = input[:object].uplink
 
     if input[:alarm_name].present?
-      p alarm = Alarm.create(value: nil, uplink: uplink)
+      alarm = Alarm.create(value: "0000", uplink: uplink)
       input.merge(alarm: alarm)
     else
       input
@@ -34,16 +31,16 @@ class Alarms::GenerateAlarm
   end
 
   def generate_accumulator_alarm(input)
-    p uplink = input[:object].uplink
+    uplink = input[:object].uplink
     accumulator_alarm_name = input[:accumulator_alarm_name]
 
     if accumulator_alarm_name[:unexpected_dump]
-      p alarm = Alarm.create(value: "0000", uplink: uplink)
-      p alarm2 = Alarm.create(value: "0000", uplink: uplink)
+      alarm = Alarm.create(value: "0000", uplink: uplink)
+      alarm2 = Alarm.create(value: "0000", uplink: uplink)
 
       input.merge(alarm: alarm, alarm2: alarm2)
     elsif accumulator_alarm_name[:imposible_consumption]
-      p alarm = Alarm.create(value: nil, uplink: uplink)
+      alarm = Alarm.create(value: "0000", uplink: uplink)
 
       input.merge(alarm: alarm)
     else

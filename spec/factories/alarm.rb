@@ -6,6 +6,5 @@ FactoryBot.define do
     viewed { false }
 
     association :uplink, factory: :uplink
-    association :alarm_type, factory: :alarm_type
   end
 end

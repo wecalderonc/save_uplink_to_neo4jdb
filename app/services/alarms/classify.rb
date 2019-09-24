@@ -32,7 +32,8 @@ class Alarms::Classify
   end
 
   def battery_level_alarm_classify(input)
-    battery_level = input[:object]
+    p "inside battery_level_alarm_classify"
+    p battery_level = input[:object]
     last_digit = last_digit(battery_level)
 
     if last_digit.eql?(1)
