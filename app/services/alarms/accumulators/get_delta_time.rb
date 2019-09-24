@@ -1,6 +1,6 @@
 require 'dry/transaction/operation'
 
-class Alarms::GetDeltaTime
+class Alarms::Accumulators::GetDeltaTime
   include Dry::Transaction::Operation
 
   def call(input)

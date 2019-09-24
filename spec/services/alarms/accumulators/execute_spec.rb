@@ -1,7 +1,7 @@
 require './config/application.rb'
-require './app/services/alarms/maths.rb'
+require './app/services/alarms/accumulators/execute.rb'
 
-RSpec.describe Alarms::Maths do
+RSpec.describe Alarms::Accumulators::Execute do
   let(:response) { response = subject.(input) }
   let(:last_accumulator) { create(:accumulator, uplink: uplink, value: 10.to_s(16)) }
   let(:uplink) { create(:uplink, time: 1568887200) }

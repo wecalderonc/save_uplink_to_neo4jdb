@@ -1,6 +1,6 @@
 require 'dry/transaction/operation'
 
-class Alarms::GetConditions
+class Alarms::Accumulators::GetConditions
   include Dry::Transaction::Operation
 
   LIMIT = 0xffffffff
