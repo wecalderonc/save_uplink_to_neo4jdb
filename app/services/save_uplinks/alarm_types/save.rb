@@ -5,7 +5,6 @@ class SaveUplinks::AlarmTypes::Classify::Save
 
   def call(input)
     alarm = input[:alarm]
-
     alarm_type = AlarmType.new(name: input[:hardware_type], value: input[:last_digit], type: :hardware, alarm: alarm)
 
     if alarm_type.save
