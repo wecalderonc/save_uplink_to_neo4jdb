@@ -4,10 +4,10 @@ class Alarms::Accumulators::GetDeltaTime
   include Dry::Transaction::Operation
 
   def call(input)
-    time_1 = accumulator_time(input[:current_accumulator])
-    time_2 = accumulator_time(input[:last_accumulator])
+    current_accumulator_time = accumulator_time(input[:current_accumulator])
+    last_accumulator_time = accumulator_time(input[:last_accumulator])
 
-    input.merge!(delta_time: (time_1 - time_2) / 60)
+    input.merge(delta_time: (current_accumulator_time - last_accumulator_time) / 60)
   end
 
   private
