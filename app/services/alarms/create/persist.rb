@@ -4,8 +4,6 @@ class Alarms::Create::Persist
   include Dry::Transaction::Operation
 
   def call(input)
-    input
-    input[:model]
 
     options = {
       accumulator: -> input { save_accumulator_alarm_type(input) },
@@ -26,8 +24,8 @@ class Alarms::Create::Persist
 
     if alarm_name
       AlarmType.create(name: alarm_name, value: input[:last_digit], type: input[:type], alarm: alarm)
-      p "por aquí con batter"
-      p input[:object]
+
+      input[:object]
     else
       input[:object]
     end

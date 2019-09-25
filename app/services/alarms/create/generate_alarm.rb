@@ -18,7 +18,6 @@ class Alarms::Create::GenerateAlarm
   private
 
   def generate_alarm(input)
-    p "input en generate alarm"
     uplink = input[:object].uplink
 
     if input[:alarm_name].present?

@@ -5,7 +5,7 @@ RSpec.describe Alarms::Create::GenerateAlarm do
 
   describe "#call" do
     context "input with battery level" do
-      let(:battery_level) { build(:battery_level, value: 0001) }
+      let(:battery_level) { build(:battery_level, value: "0001") }
       let(:input)  {
         {
           object: battery_level,

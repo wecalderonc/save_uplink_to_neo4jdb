@@ -34,6 +34,10 @@ class Thing
     self.uplinks.order(created_at: :desc).limit(quantity)
   end
 
+  def last_accumulators(quantity = 1)
+    self.last_uplinks(quantity).map(&:accumulator)
+  end
+
   private
 
   #TODO: Fix this in the next version.

@@ -11,7 +11,7 @@ RSpec.describe Alarms::Create::Execute do
     end
 
     context "When the object is an Alarm" do
-      let(:alarm) { create(:alarm, value: "0000") }
+      let(:alarm) { build(:alarm, value: "0000") }
       let(:input) {
         {
           object: alarm,
@@ -36,7 +36,7 @@ RSpec.describe Alarms::Create::Execute do
 
       context "When all the operations are successful alarm type power_connection" do
 
-        let(:alarm) { create(:alarm, value: "0001") }
+        let(:alarm) { build(:alarm, value: "0001") }
         let(:input) {
           {
             object: alarm,
@@ -59,7 +59,7 @@ RSpec.describe Alarms::Create::Execute do
 
       context "When all the operations are successful alarm type induced_site_alarm" do
 
-        let(:alarm) { create(:alarm, value: "0002") }
+        let(:alarm) { build(:alarm, value: "0002") }
         let(:input) {
           {
             object: alarm,
@@ -82,7 +82,7 @@ RSpec.describe Alarms::Create::Execute do
 
       context "When all the operations are successful alarm type sos" do
 
-        let(:alarm) { create(:alarm, value: "0003") }
+        let(:alarm) { build(:alarm, value: "0003") }
         let(:input) {
           {
             object: alarm,
@@ -151,7 +151,7 @@ RSpec.describe Alarms::Create::Execute do
     end
 
     context "When the object is a battery_level" do
-      let(:battery_level) { create(:battery_level, value: "0001") }
+      let(:battery_level) { build(:battery_level, value: "0001") }
       let(:input) {
         {
           object: battery_level,
@@ -174,7 +174,7 @@ RSpec.describe Alarms::Create::Execute do
       end
 
       context "When all the operations are successful without alarm" do
-        let(:battery_level) { create(:battery_level, value: "0000") }
+        let(:battery_level) { build(:battery_level, value: "0000") }
         let(:input) {
           {
             object: battery_level,
@@ -239,18 +239,23 @@ RSpec.describe Alarms::Create::Execute do
       end
     end
 
-    #TO COMPLETE WITH JEI
     context "When the object is an accumulator" do
-      let(:accumulator) { create(:accumulator, value: "0000") }
+      let(:last_accumulator) { create(:accumulator, value: "00000000")}
+      let(:thing) { last_accumulator.uplink.thing }
+      let(:uplink) { create(:uplink, thing: thing) }
+      let(:current_accumulator) { build(:accumulator, value: "eeeedddd", uplink: uplink) }
+
       let(:input) {
         {
-          object: accumulator,
+          object: current_accumulator,
           type: :software,
           model: :accumulator
         }
       }
+
       context "When all the operations are successful" do
         it "Should return a Success response" do
+
           response = subject.(input)
 
           expect(response).to be_success

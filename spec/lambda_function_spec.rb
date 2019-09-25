@@ -3,15 +3,16 @@ require './config/application.rb'
 
 
 RSpec.describe Handler do
-  let(:subject) { described_class }
-  let(:thing)   { create(:thing) }
-  let(:context) { {} }
-  let(:event)   {
+  let(:subject)     { described_class }
+  let(:accumulator) { create(:accumulator, value: "00000000")}
+  let(:thing)       { accumulator.uplink.thing }
+  let(:context)     { {} }
+  let(:event)       {
     {
       "state": {
           "reported": {
             "device":thing.name,
-            "data":"00674000130670200001ascd",
+            "data":"00674000130670200001aaaa",
             "time":"1548277798",
             "snr":"16.32",
             "station":"146A",

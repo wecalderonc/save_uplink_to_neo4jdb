@@ -1,5 +1,4 @@
 require 'dry/validation'
-require './app/validators/dependencies.rb'
 require './app/validators.rb'
 
 module Validators::Uplinks

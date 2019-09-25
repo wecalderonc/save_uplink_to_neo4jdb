@@ -1,6 +1,4 @@
 require 'dry/validation'
-require './app/validators/dependencies.rb'
-require './app/validators.rb'
 require './app/models/alarm_type.rb'
 
 module Validators::Alarms

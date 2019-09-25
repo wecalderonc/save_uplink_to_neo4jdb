@@ -4,8 +4,6 @@ class Alarms::Create::Classify
   include Dry::Transaction::Operation
 
   def call(input)
-    uplink = input[:object].uplink
-
     options = {
       accumulator:      -> input { accumulator_alarm_classify(input) },
       alarm:            -> input { classify_alarm(input) },
@@ -44,19 +42,13 @@ class Alarms::Create::Classify
     end
   end
 
-
   def accumulator_alarm_classify(input)
-    accumulator = input[:object]
+    flow_per_minute = input[:object].uplink.thing.flow_per_minute
+    current_accumulator = input[:object]
+    last_accumulator = input[:object].uplink.thing.last_accumulators(2).compact[0]
 
-    if "calculos y metodos de jeisson"
-      accumulator_alarm_name = {
-        unexpected_dump: true,
-        imposible_consumption: true
-      }
+    accumulator_alarm_name = Alarms::Accumulators::Execute.new.(current_accumulator: current_accumulator, last_accumulator: last_accumulator, flow_per_minute: flow_per_minute)
 
-      Success input.merge(accumulator_alarm_name: accumulator_alarm_name)
-    else
-      Success input
-    end
+    Success input.merge(accumulator_alarm_name: accumulator_alarm_name.success)
   end
 end
