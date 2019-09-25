@@ -5,11 +5,10 @@ class SaveUplinks::SaveMessagesInDb
   include Dry::Transaction::Operation
 
   def call(input)
-
     possible_errors = input[:new_messages].map do |message|
-      p bit_descriptor = message[0]
+      bit_descriptor = message[0]
 
-      p result = uplink_attributes[bit_descriptor].(message[1..10], input[:uplink]).success
+      result = uplink_attributes[bit_descriptor].(message[1..10], input[:uplink]).success
 
       if not result.save
         Errors.general_error(result.errors.messages, self.class)

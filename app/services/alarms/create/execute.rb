@@ -1,13 +1,13 @@
-require './app/services/alarms/classify.rb'
-require './app/services/alarms/persist.rb'
+require './app/services/alarms/create/classify.rb'
+require './app/services/alarms/create/persist.rb'
 require './app/services/alarms/create/generate_alarm.rb'
 
 module Alarms::Create
   _, BaseTx = Common::TxMasterBuilder.new do
     step :validate_input,        with: Common::Operations::Validator.(:create, :alarm)
-    step :classify,              with: Alarms::Classify.new
-    step :generate_alarm,        with: Alarms::GenerateAlarm.new
-    step :persist_alarm_type,    with: Alarms::Persist.new
+    step :classify,              with: Alarms::Create::Classify.new
+    step :generate_alarm,        with: Alarms::Create::GenerateAlarm.new
+    step :persist_alarm_type,    with: Alarms::Create::Persist.new
   end.Do
 
   Proxy = {

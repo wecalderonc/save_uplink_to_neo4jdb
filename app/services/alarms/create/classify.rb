@@ -1,6 +1,6 @@
 require 'dry/transaction/operation'
 
-class Alarms::Classify
+class Alarms::Create::Classify
   include Dry::Transaction::Operation
 
   def call(input)
@@ -32,8 +32,7 @@ class Alarms::Classify
   end
 
   def battery_level_alarm_classify(input)
-    p "inside battery_level_alarm_classify"
-    p battery_level = input[:object]
+    battery_level = input[:object]
     last_digit = last_digit(battery_level)
 
     if last_digit.eql?(1)

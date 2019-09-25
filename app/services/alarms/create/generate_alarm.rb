@@ -1,6 +1,6 @@
 require 'dry/transaction/operation'
 
-class Alarms::GenerateAlarm
+class Alarms::Create::GenerateAlarm
   include Dry::Transaction::Operation
 
   def call(input)
