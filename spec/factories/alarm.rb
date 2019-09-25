@@ -1,6 +1,8 @@
+require 'faker'
+
 FactoryBot.define do
   factory :alarm do
-    value { Faker::Number.hexadecimal(digits=4) }
+    value { "0001" }
     viewed { false }
 
     association :uplink, factory: :uplink
