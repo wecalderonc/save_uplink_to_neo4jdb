@@ -42,10 +42,10 @@ class Alarms::Create::GenerateAlarm
   end
 
   def unexpected_dump(input)
-    alarm = Alarm.create(value: "0000", uplink: input[:object].uplink)
-    alarm2 = Alarm.create(value: "0000", uplink: input[:object].uplink)
+    first_alarm = Alarm.create(value: "0000", uplink: input[:object].uplink)
+    second_alarm = Alarm.create(value: "0000", uplink: input[:object].uplink)
 
-    input.merge!(alarm: alarm, alarm2: alarm2)
+    input.merge!(impossible_consumption_alarm: first_alarm, unexpected_dump_alarm: second_alarm)
   end
 
   def imposible_consumption_or_no_alarm(input)

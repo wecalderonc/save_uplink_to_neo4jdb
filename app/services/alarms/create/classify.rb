@@ -46,10 +46,10 @@ class Alarms::Create::Classify
     thing = current_accumulator.uplink.thing
 
     alarm_attrs = {
-                    current_accumulator: current_accumulator,
-                    last_accumulator: thing.last_accumulators(2).compact[0],
-                    flow_per_minute: thing.flow_per_minute
-                  }
+      current_accumulator: current_accumulator,
+      last_accumulator: thing.last_accumulators(2).compact[0],
+      flow_per_minute: thing.flow_per_minute
+    }
 
     check_alarms = Alarms::Accumulators::Execute.new.(alarm_attrs)
 

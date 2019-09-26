@@ -54,8 +54,8 @@ RSpec.describe Alarms::Create::GenerateAlarm do
           response = subject.call(input)
 
           expect(response).to be_success
-          expect(response.success[:alarm].value).to match("0000")
-          expect(response.success[:alarm2].value).to match("0000")
+          expect(response.success[:impossible_consumption_alarm].value).to match("0000")
+          expect(response.success[:unexpected_dump_alarm].value).to match("0000")
         end
       end
 
