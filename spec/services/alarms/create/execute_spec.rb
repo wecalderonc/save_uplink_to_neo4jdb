@@ -30,7 +30,6 @@ RSpec.describe Alarms::Create::Execute do
           expect(response).to be_success
           expect(AlarmType.all.count).to match(alarm_type_count + 1)
           expect(new_alarm_type.name).to match(:does_not_apply.to_s)
-
         end
       end
 
@@ -53,7 +52,6 @@ RSpec.describe Alarms::Create::Execute do
           expect(response).to be_success
           expect(AlarmType.all.count).to match(alarm_type_count + 1)
           expect(new_alarm_type.name).to match(:power_connection.to_s)
-
         end
       end
 
@@ -76,7 +74,6 @@ RSpec.describe Alarms::Create::Execute do
           expect(response).to be_success
           expect(AlarmType.all.count).to match(alarm_type_count + 1)
           expect(new_alarm_type.name).to match(:induced_site_alarm.to_s)
-
         end
       end
 
@@ -99,7 +96,6 @@ RSpec.describe Alarms::Create::Execute do
           expect(response).to be_success
           expect(AlarmType.all.count).to match(alarm_type_count + 1)
           expect(new_alarm_type.name).to match(:sos.to_s)
-
         end
       end
 
