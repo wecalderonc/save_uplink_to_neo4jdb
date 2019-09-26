@@ -6,7 +6,6 @@ class Alarms::Create::GenerateAlarm
   def call(input)
     options = {
       accumulator: -> input { generate_accumulator_alarm(input) },
-      alarm: -> input { generate_alarm(input) },
       battery_level: -> input { generate_alarm(input) }
     }
 

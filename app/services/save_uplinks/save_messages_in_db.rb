@@ -26,7 +26,7 @@ class SaveUplinks::SaveMessagesInDb
   def uplink_attributes
     sensors = {
       "2"=> lambda { |value, uplink| Alarms::Create::Execute.(object: Accumulator.new(value: value, uplink: uplink), model: :accumulator, type: :software) },
-      "3"=> lambda { |value, uplink| Alarms::Create::Execute.(object: BatteryLevel.new(value: value, uplink: uplink), model: :battery_level, type: :hardware) },
+      "3"=> lambda { |value, uplink| Alarms::Create::Execute.(object: BatteryLevel.new(value: value, uplink: uplink), model: :battery_level, type: :software) },
       "4"=> lambda { |value, uplink| success_monad(ValvePosition.new(value: value, uplink: uplink)) },
       "5"=> lambda { |value, uplink| success_monad(TimeUplink.new(value: value, uplink: uplink)) },
       "6"=> lambda { |value, uplink| success_monad(UplinkBDownlink.new(value: value, uplink: uplink)) },

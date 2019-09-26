@@ -6,7 +6,7 @@ class Alarms::Create::Classify
   def call(input)
     options = {
       accumulator:      -> input { accumulator_alarm_classify(input) },
-      alarm:            -> input { classify_alarm(input) },
+      alarm:            -> input { alarm_classify(input) },
       battery_level:    -> input { battery_level_alarm_classify(input)}
     }
 
@@ -21,7 +21,7 @@ class Alarms::Create::Classify
     object.value[-1].to_i
   end
 
-  def classify_alarm(input)
+  def alarm_classify(input)
     alarm = input[:object]
     last_digit = last_digit(alarm)
     alarm_name = AlarmType::HARDWARE_ALARMS[last_digit] || :does_not_apply
@@ -43,12 +43,13 @@ class Alarms::Create::Classify
   end
 
   def accumulator_alarm_classify(input)
-    flow_per_minute = input[:object].uplink.thing.flow_per_minute
     current_accumulator = input[:object]
-    last_accumulator = input[:object].uplink.thing.last_accumulators(2).compact[0]
+    thing = current_accumulator.uplink.thing
+    flow_per_minute = thing.flow_per_minute
+    last_accumulator = thing.last_accumulators(2).compact[0]
 
-    accumulator_alarm_name = Alarms::Accumulators::Execute.new.(current_accumulator: current_accumulator, last_accumulator: last_accumulator, flow_per_minute: flow_per_minute)
+    check_alarms = Alarms::Accumulators::Execute.new.(current_accumulator: current_accumulator, last_accumulator: last_accumulator, flow_per_minute: flow_per_minute)
 
-    Success input.merge(accumulator_alarm_name: accumulator_alarm_name.success)
+    Success input.merge(accumulator_alarm_name: check_alarms.success)
   end
 end

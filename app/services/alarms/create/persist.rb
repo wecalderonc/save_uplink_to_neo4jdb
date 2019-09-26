@@ -6,9 +6,9 @@ class Alarms::Create::Persist
   def call(input)
 
     options = {
-      accumulator: -> input { save_accumulator_alarm_type(input) },
-      alarm: -> input { save_alarm_type(input) },
-      battery_level: -> input { save_alarm_type(input) }
+      accumulator:    -> input { save_accumulator_alarm_type(input) },
+      alarm:          -> input { save_alarm_type(input) },
+      battery_level:  -> input { save_alarm_type(input) }
     }
 
     options.default = lambda { Success input }
@@ -24,31 +24,26 @@ class Alarms::Create::Persist
 
     if alarm_name
       AlarmType.create(name: alarm_name, value: input[:last_digit], type: input[:type], alarm: alarm)
-
-      input[:object]
-    else
-      input[:object]
     end
+
+    input[:object]
   end
 
   def save_accumulator_alarm_type(input)
     accumulator_alarm_name = input[:accumulator_alarm_name]
+    alarm = input[:alarm]
 
-    if accumulator_alarm_name[:unexpected_dump]
-      alarm = input[:alarm]
+    if accumulator_alarm_name[:unexpected_dump] && accumulator_alarm_name[:imposible_consumption]
       alarm2 = input[:alarm2]
 
       AlarmType.create(name: :unexpected_dump, value: "0", type: input[:type], alarm: alarm)
       AlarmType.create(name: :imposible_consumption, value: "0", type: input[:type], alarm: alarm2)
-
-      input[:object]
-    elsif accumulator_alarm_name[:imposible_consumption]
-      alarm = input[:alarm]
-      AlarmType.create(name: :imposible_consumption, value: "0", type: input[:type], alarm: alarm)
-
-      input[:object]
-    else
-      input[:object]
     end
+
+    if accumulator_alarm_name[:imposible_consumption] && (accumulator_alarm_name[:unexpected_dump] == false)
+      AlarmType.create(name: :imposible_consumption, value: "0", type: input[:type], alarm: alarm)
+    end
+
+    input[:object]
   end
 end

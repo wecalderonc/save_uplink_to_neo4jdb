@@ -35,36 +35,6 @@ RSpec.describe Alarms::Create::GenerateAlarm do
       end
     end
 
-    context "Input with alarm" do
-      let(:alarm) { build(:alarm) }
-      let(:input)  {
-        {
-          object: alarm,
-          model: :alarm,
-          type: :hardware,
-          alarm_name: :power_connection
-        }
-      }
-      context "The input is valid with alarm" do
-        it "Should return a Success response" do
-          response = subject.call(input)
-
-          expect(response).to be_success
-          expect(response.success[:alarm].value).to match("0000")
-        end
-      end
-
-      context "The input doesnt have alarm_name with alarm" do
-        it "Should return a Success response" do
-          input.delete(:alarm_name)
-          response = subject.call(input)
-
-          expect(response).to be_success
-          expect(response.success[:alarm]).to match(nil)
-        end
-      end
-    end
-
     context "Input with accumulator" do
       context "The input is true in unexpected_dump and imposible_consumption" do
         let(:accumulator) { build(:accumulator) }
