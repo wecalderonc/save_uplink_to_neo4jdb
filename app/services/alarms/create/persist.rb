@@ -22,7 +22,7 @@ class Alarms::Create::Persist
     alarm_name = input[:alarm_name]
     alarm = input[:alarm]
 
-    if alarm_name
+    if alarm_name.present?
       AlarmType.create(name: alarm_name, value: input[:last_digit], type: input[:type], alarm: alarm)
     end
 
