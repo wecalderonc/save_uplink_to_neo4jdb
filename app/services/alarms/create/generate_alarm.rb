@@ -25,7 +25,6 @@ class Alarms::Create::GenerateAlarm
     else
       input
     end
-
   end
 
   def generate_accumulator_alarm(input)
