@@ -1,7 +1,6 @@
 require 'dry/transaction'
 require 'dry/transaction/operation'
 
-
 module Common
 
   TxBuilder = -> steps, container do

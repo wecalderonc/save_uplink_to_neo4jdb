@@ -3,14 +3,22 @@ require './config/application.rb'
 RSpec.describe SaveUplinks::Execute do
 
   describe "#call" do
-    let(:thing) { create(:thing) }
+
+    before :each do
+     Accumulator.destroy_all
+     Uplink.destroy_all
+     Thing.destroy_all
+    end
+
+    let(:accumulator) { create(:accumulator, value: "00000000")}
+    let(:thing) { accumulator.uplink.thing }
 
     let(:input)  {
       {
         "state": {
           "reported": {
             "device": thing.name,
-            "data":"00670430080670200001ascd",
+            "data":"00670430080670200001aaaa",
             "time":"1548277798",
             "snr":"16.32",
             "station":"146A",
@@ -26,6 +34,7 @@ RSpec.describe SaveUplinks::Execute do
 
     context "When all the operations are successful" do
       it "Should return a Success response" do
+
         response = subject.(input)
 
         expect(response).to be_success

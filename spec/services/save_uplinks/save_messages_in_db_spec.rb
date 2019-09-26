@@ -73,40 +73,35 @@ RSpec.describe SaveUplinks::SaveMessagesInDb do
 
     context "Two value are empty in a string in the new_message input" do
       it "Should return errors" do
-        input[:new_messages] = ["a111","9","3","f444"]
+        input[:new_messages] = ["a111","9","30","f444"]
         response = subject.call(input)
 
         expect(response).to be_success
         expect(response.success[:results].size).to eq(4)
         expect(response.success[:results][1][:error]).to eq({:value=>["can't be blank"]})
-        expect(response.success[:results][2][:error]).to eq({:value=>["can't be blank"]})
       end
     end
 
     context "Three values are empty in a string in the new_message input" do
       it "Should return errors" do
-        input[:new_messages] = ["a111","9","3","5"]
+        input[:new_messages] = ["a111","9","30","5"]
         response = subject.call(input)
 
         expect(response).to be_success
         expect(response.success[:results].size).to eq(4)
         expect(response.success[:results][1][:error]).to eq({:value=>["can't be blank"]})
-        expect(response.success[:results][2][:error]).to eq({:value=>["can't be blank"]})
-        expect(response.success[:results][3][:error]).to eq({:value=>["can't be blank"]})
       end
     end
 
     context "All values are empty in a string in the new_message input" do
       it "Should return errors" do
-        input[:new_messages] = ["a","9","3","8"]
+        input[:new_messages] = ["a","9","30","8"]
         response = subject.call(input)
 
         expect(response).to be_success
         expect(response.success[:results].size).to eq(4)
         expect(response.success[:results][0][:error]).to eq({:value=>["can't be blank"]})
         expect(response.success[:results][1][:error]).to eq({:value=>["can't be blank"]})
-        expect(response.success[:results][2][:error]).to eq({:value=>["can't be blank"]})
-        expect(response.success[:results][3][:error]).to eq({:value=>["can't be blank"]})
       end
     end
   end
