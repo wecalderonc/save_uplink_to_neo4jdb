@@ -33,22 +33,25 @@ class Alarms::Create::Classify
     battery_level = input[:object]
     last_digit = last_digit(battery_level)
 
-    if last_digit.eql?(1)
+    if last_digit == 1
       alarm_name = AlarmType::SOFTWARE_ALARMS[3]
-
-      Success input.merge(alarm_name: alarm_name, last_digit: last_digit)
-    else
-      Success input
+      input.merge!(alarm_name: alarm_name, last_digit: last_digit)
     end
+
+    Success input
   end
 
   def accumulator_alarm_classify(input)
     current_accumulator = input[:object]
     thing = current_accumulator.uplink.thing
-    flow_per_minute = thing.flow_per_minute
-    last_accumulator = thing.last_accumulators(2).compact[0]
 
-    check_alarms = Alarms::Accumulators::Execute.new.(current_accumulator: current_accumulator, last_accumulator: last_accumulator, flow_per_minute: flow_per_minute)
+    alarm_attrs = {
+                    current_accumulator: current_accumulator,
+                    last_accumulator: thing.last_accumulators(2).compact[0],
+                    flow_per_minute: thing.flow_per_minute
+                  }
+
+    check_alarms = Alarms::Accumulators::Execute.new.(alarm_attrs)
 
     Success input.merge(accumulator_alarm_name: check_alarms.success)
   end

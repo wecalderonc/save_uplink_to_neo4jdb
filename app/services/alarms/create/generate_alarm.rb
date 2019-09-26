@@ -21,10 +21,10 @@ class Alarms::Create::GenerateAlarm
 
     if input[:alarm_name].present?
       alarm = Alarm.create(value: "0000", uplink: uplink)
-      input.merge(alarm: alarm)
-    else
-      input
+      input.merge!(alarm: alarm)
     end
+
+    input
   end
 
   def generate_accumulator_alarm(input)

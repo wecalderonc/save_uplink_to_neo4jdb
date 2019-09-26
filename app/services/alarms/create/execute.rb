@@ -18,7 +18,8 @@ module Alarms::Create
     )
   }
 
-  Proxy.default = -> input { Dry::Monads::Result::Failure.new(Errors.general_error("The model is not in the list", self.class)) }
+  error = Errors.general_error("The model is not in the list", self.class)
+  Proxy.default = -> input { Dry::Monads::Result::Failure.new(error) }
 
   Execute = -> input { Proxy[input[:model]].(input) }
 end
