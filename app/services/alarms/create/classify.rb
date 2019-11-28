@@ -44,6 +44,14 @@ class Alarms::Create::Classify
   def accumulator_alarm_classify(input)
     current_accumulator = input[:object]
     thing = current_accumulator.uplink.thing
+    puts "AQUÍ MIRANDO DENTRO DEL THING"
+
+    puts thing
+    puts thing.last_accumulators
+    puts thing.last_accumulators(2)
+
+
+    puts "AQUÍ MIRANDO DENTRO DEL THING"
 
     alarm_attrs = {
       current_accumulator: current_accumulator,
