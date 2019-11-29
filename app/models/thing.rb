@@ -30,15 +30,12 @@ class Thing
 
   has_one :out, :locates, rel_class: :ThingLocation, model_class: :Location
 
+  #TODO CRITICAL POINT OF FAILURE - TOO MANY REQUESTS TO UPLINKS
   def last_uplinks(quantity = 1)
-    puts "DENTRO DE LAST UPLINKS"
-    puts self.uplinks.order(created_at: :desc).limit(quantity)
     self.uplinks.order(created_at: :desc).limit(quantity)
   end
 
   def last_accumulators(quantity = 1)
-    puts "DENTRO DE last_accumulators"
-    puts self.last_uplinks(quantity).map(&:accumulator)
     self.last_uplinks(quantity).map(&:accumulator)
   end
 

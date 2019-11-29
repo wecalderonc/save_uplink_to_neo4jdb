@@ -4,7 +4,6 @@ class Alarms::Accumulators::GetAccumulatorsValue
   include Dry::Transaction::Operation
 
   def call(input)
-    puts input
     last_acc = get_accumulator_value(input[:last_accumulator])
 
     current_acc = get_accumulator_value(input[:current_accumulator])
@@ -12,8 +11,6 @@ class Alarms::Accumulators::GetAccumulatorsValue
   end
 
   def get_accumulator_value(accumulator)
-    puts "INSIDE GET ACCUMULATOR VALUE"
-    puts accumulator
     accumulator.value.to_i(16)
   end
 end

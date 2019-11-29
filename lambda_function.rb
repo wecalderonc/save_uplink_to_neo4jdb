@@ -4,6 +4,7 @@ require './config/application.rb'
 module Handler
   def self.lambda_handler(event:, context:)
     event.deep_transform_keys!(&:to_sym)
+
     p result = SaveUplinks::Execute.new.(event)
 
     if result.success?
