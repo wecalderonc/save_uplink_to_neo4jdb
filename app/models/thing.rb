@@ -30,6 +30,7 @@ class Thing
 
   has_one :out, :locates, rel_class: :ThingLocation, model_class: :Location
 
+  #TODO CRITICAL POINT OF FAILURE - TOO MANY REQUESTS TO UPLINKS
   def last_uplinks(quantity = 1)
     self.uplinks.order(created_at: :desc).limit(quantity)
   end

@@ -47,7 +47,7 @@ class Alarms::Create::Classify
 
     alarm_attrs = {
       current_accumulator: current_accumulator,
-      last_accumulator: thing.last_accumulators(2).compact[0],
+      last_accumulator: thing.uplinks.accumulator[0],
       flow_per_minute: thing.flow_per_minute
     }
 
