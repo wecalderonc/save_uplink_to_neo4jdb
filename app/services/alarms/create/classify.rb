@@ -26,7 +26,7 @@ class Alarms::Create::Classify
     last_digit = last_digit(alarm)
     alarm_name = AlarmType::HARDWARE_ALARMS[last_digit] || :does_not_apply
 
-    Success input.merge(alarm_name: alarm_name, last_digit: last_digit)
+    Success input.merge(alarm: alarm, alarm_name: alarm_name, last_digit: last_digit)
   end
 
   def battery_level_alarm_classify(input)

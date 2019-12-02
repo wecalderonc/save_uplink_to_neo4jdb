@@ -81,6 +81,7 @@ RSpec.describe Alarms::Create::Classify do
 
           expected_response = {
             object: alarm,
+            alarm: alarm,
             model: :alarm,
             type: :hardware,
             alarm_name: :does_not_apply,
@@ -107,6 +108,7 @@ RSpec.describe Alarms::Create::Classify do
 
           expected_response = {
             object: alarm,
+            alarm: alarm,
             model: :alarm,
             type: :hardware,
             alarm_name: :power_connection,
@@ -133,6 +135,7 @@ RSpec.describe Alarms::Create::Classify do
 
           expected_response = {
             object: alarm,
+            alarm: alarm,
             model: :alarm,
             type: :hardware,
             alarm_name: :induced_site_alarm,
@@ -159,6 +162,7 @@ RSpec.describe Alarms::Create::Classify do
 
           expected_response = {
             object: alarm,
+            alarm: alarm,
             model: :alarm,
             type: :hardware,
             alarm_name: :sos,
@@ -185,6 +189,7 @@ RSpec.describe Alarms::Create::Classify do
 
           expected_response = {
             object: alarm,
+            alarm: alarm,
             model: :alarm,
             type: :hardware,
             alarm_name: :does_not_apply,
