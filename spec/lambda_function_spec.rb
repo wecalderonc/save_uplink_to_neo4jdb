@@ -24,25 +24,6 @@ RSpec.describe Handler do
           }
       }
     }
-
-    # {
-    #   "state"=>
-    #   {
-    #     "reported"=>
-    #     {
-    #       "device"=>"3E3BF2",
-    #       "data"=>"00000000030051200001001d",
-    #       "time"=>"1574955216",
-    #       "snr"=>"6.00",
-    #       "station"=>"116B",
-    #       "avgSnr"=>"20.35",
-    #       "lat"=>"5.0",
-    #       "lng"=>"-74.0",
-    #       "rssi"=>"-123.00",
-    #       "seqNumber"=>"62"
-    #     }
-    #   }
-    # }
   }
 
   describe "#lambda_handler" do
