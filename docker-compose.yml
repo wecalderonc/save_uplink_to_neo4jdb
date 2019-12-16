@@ -24,7 +24,7 @@ services:
      environment:
       - APP_ENV=prod
      command: >
-       bash -c "apt-get install -y zip &&
+       bash -c "apt-get update && apt-get install -y zip &&
        bundle &&
        rake  neo4j:migrate &&
        rm -r vendor/bundle/ruby/2.5.0/cache &&
