@@ -148,7 +148,7 @@ RSpec.describe Alarms::Create::Persist do
     end
 
     context "Input with accumulator" do
-      context "The input is true in unexpected_dump and imposible_consumption" do
+      context "The input is true in unexpected_dump and impossible_consumption" do
         let(:accumulator) { build(:accumulator) }
         let(:input)  {
           {
@@ -157,7 +157,7 @@ RSpec.describe Alarms::Create::Persist do
             type: :hardware,
             accumulator_alarm_name: {
               unexpected_dump: true,
-              imposible_consumption: true
+              impossible_consumption: true
             }
           }
         }
@@ -173,7 +173,7 @@ RSpec.describe Alarms::Create::Persist do
         end
       end
 
-      context "The input is true imposible_consumption and false unexpected_dump" do
+      context "The input is true impossible_consumption and false unexpected_dump" do
         let(:accumulator) { build(:accumulator) }
         let(:input)  {
           {
@@ -182,7 +182,7 @@ RSpec.describe Alarms::Create::Persist do
             type: :hardware,
             accumulator_alarm_name: {
               unexpected_dump: false,
-              imposible_consumption: true
+              impossible_consumption: true
             }
           }
         }
@@ -195,11 +195,11 @@ RSpec.describe Alarms::Create::Persist do
 
           expect(response).to be_success
           expect(AlarmType.all.count).to match(alarm_type_count + 1)
-          expect(new_alarm_type.name).to match(:imposible_consumption.to_s)
+          expect(new_alarm_type.name).to match(:impossible_consumption.to_s)
         end
       end
 
-      context "The input is false in unexpected_dump and imposible_consumption" do
+      context "The input is false in unexpected_dump and impossible_consumption" do
         let(:accumulator) { build(:accumulator) }
         let(:input)  {
           {
@@ -208,7 +208,7 @@ RSpec.describe Alarms::Create::Persist do
             type: :hardware,
             accumulator_alarm_name: {
               unexpected_dump: false,
-              imposible_consumption: false
+              impossible_consumption: false
             }
           }
         }

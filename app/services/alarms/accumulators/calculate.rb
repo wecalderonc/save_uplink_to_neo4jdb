@@ -1,4 +1,9 @@
-require 'dry/transaction/operation'
+require 'dry/transaction/operation'impossible_consumption
+impossible_consumption
+impossible_consumption
+impossible_consumption
+impossible_consumption
+impossible_consumption
 
 class Alarms::Accumulators::Calculate
   include Dry::Transaction::Operation
@@ -8,7 +13,7 @@ class Alarms::Accumulators::Calculate
   def call(input)
     attributes = input.values_at(:current_acc_value, :last_acc_value, :delta_time)
     options = {
-      imposible_consumption: imposible_consumption?(*attributes),
+      impossible_consumption: impossible_consumption?(*attributes),
       unexpected_dump: unexpected_dump?(*attributes)
     }
 
@@ -17,7 +22,7 @@ class Alarms::Accumulators::Calculate
 
   private
 
-  def imposible_consumption?(current_acc, last_acc, delta_time)
+  def impossible_consumption?(current_acc, last_acc, delta_time)
     (current_acc - last_acc) / delta_time
   end
 

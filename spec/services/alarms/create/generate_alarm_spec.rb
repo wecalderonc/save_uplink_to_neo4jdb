@@ -36,7 +36,7 @@ RSpec.describe Alarms::Create::GenerateAlarm do
     end
 
     context "Input with accumulator" do
-      context "The input is true in unexpected_dump and imposible_consumption" do
+      context "The input is true in unexpected_dump and impossible_consumption" do
         let(:accumulator) { build(:accumulator) }
         let(:input)  {
           {
@@ -45,7 +45,7 @@ RSpec.describe Alarms::Create::GenerateAlarm do
             type: :hardware,
             accumulator_alarm_name: {
               unexpected_dump: true,
-              imposible_consumption: true
+              impossible_consumption: true
             }
           }
         }
@@ -59,7 +59,7 @@ RSpec.describe Alarms::Create::GenerateAlarm do
         end
       end
 
-      context "The input is true imposible_consumption and false unexpected_dump" do
+      context "The input is true impossible_consumption and false unexpected_dump" do
         let(:accumulator) { build(:accumulator) }
         let(:input)  {
           {
@@ -68,7 +68,7 @@ RSpec.describe Alarms::Create::GenerateAlarm do
             type: :hardware,
             accumulator_alarm_name: {
               unexpected_dump: false,
-              imposible_consumption: true
+              impossible_consumption: true
             }
           }
         }
@@ -81,7 +81,7 @@ RSpec.describe Alarms::Create::GenerateAlarm do
         end
       end
 
-      context "The input is false in unexpected_dump and imposible_consumption" do
+      context "The input is false in unexpected_dump and impossible_consumption" do
         let(:accumulator) { build(:accumulator) }
         let(:input)  {
           {
@@ -90,7 +90,7 @@ RSpec.describe Alarms::Create::GenerateAlarm do
             type: :hardware,
             accumulator_alarm_name: {
               unexpected_dump: false,
-              imposible_consumption: false
+              impossible_consumption: false
             }
           }
         }
