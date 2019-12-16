@@ -33,7 +33,7 @@ class Alarms::Create::GenerateAlarm
 
     options = {
       true =>  -> input { unexpected_dump(input) },
-      false => -> input { imposible_consumption_or_no_alarm(input) }
+      false => -> input { impossible_consumption_or_no_alarm(input) }
     }
 
     options.default = input
@@ -48,8 +48,8 @@ class Alarms::Create::GenerateAlarm
     input.merge!(impossible_consumption_alarm: first_alarm, unexpected_dump_alarm: second_alarm)
   end
 
-  def imposible_consumption_or_no_alarm(input)
-    if input[:accumulator_alarm_name][:imposible_consumption]
+  def impossible_consumption_or_no_alarm(input)
+    if input[:accumulator_alarm_name][:impossible_consumption]
       alarm = Alarm.create(value: "0000", uplink: input[:object].uplink)
       input.merge!(alarm: alarm)
     end

@@ -18,32 +18,32 @@ RSpec.describe Alarms::Accumulators::Execute do
   describe "#equations" do
     context "There are any alarms" do
       it "Should return a hash with  both alarms in false" do
-        expected_response = { unexpected_dump: false, imposible_consumption: false }
+        expected_response = { unexpected_dump: false, impossible_consumption: false }
 
         expect(response).to be_success
         expect(response.success).to eq(expected_response)
       end
     end
 
-    context "There are an imposible_consumption" do
+    context "There are an impossible_consumption" do
       it "Should return a hash with  both alarms in true" do
         last_accumulator.update(value: 100.to_s(16))
         current_accumulator.update(value: 10000.to_s(16))
 
 
-        expected_response = { unexpected_dump: false, imposible_consumption: true }
+        expected_response = { unexpected_dump: false, impossible_consumption: true }
 
         expect(response).to be_success
         expect(response.success).to eq(expected_response)
       end
     end
 
-    context "There are an imposible_consumption and an unexpected_dump" do
+    context "There are an impossible_consumption and an unexpected_dump" do
       it "Should return a hash with  both alarms in true" do
         last_accumulator.update(value: 9000.to_s(16))
         current_accumulator.update(value: 4000.to_s(16))
 
-        expected_response = { unexpected_dump: true, imposible_consumption: true }
+        expected_response = { unexpected_dump: true, impossible_consumption: true }
 
         expect(response).to be_success
         expect(response.success).to eq(expected_response)

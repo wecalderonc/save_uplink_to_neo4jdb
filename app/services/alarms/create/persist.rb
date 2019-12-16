@@ -31,7 +31,7 @@ class Alarms::Create::Persist
   def save_accumulator_alarm_type(input)
     options = {
       true =>  -> input { unexpected_dump(input) },
-      false => -> input { imposible_consumption_or_no_alarm(input) }
+      false => -> input { impossible_consumption_or_no_alarm(input) }
     }
 
     options.default = input
@@ -42,16 +42,16 @@ class Alarms::Create::Persist
 
   def unexpected_dump(input)
     AlarmType.create(create_attrs(input[:type], :unexpected_dump, input[:unexpected_dump_alarm]))
-    AlarmType.create(create_attrs(input[:type], :imposible_consumption, input[:impossible_consumption_alarm]))
+    AlarmType.create(create_attrs(input[:type], :impossible_consumption, input[:impossible_consumption_alarm]))
     input[:object]
   end
 
-  def imposible_consumption_or_no_alarm(input)
+  def impossible_consumption_or_no_alarm(input)
     alarm = input[:impossible_consumption_alarm]
 
-    if input[:accumulator_alarm_name][:imposible_consumption]
+    if input[:accumulator_alarm_name][:impossible_consumption]
       alarm_type_attrs = {
-        name: :imposible_consumption,
+        name: :impossible_consumption,
         value: "0",
         type: input[:type],
         alarm: alarm

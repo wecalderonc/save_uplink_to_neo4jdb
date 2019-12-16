@@ -226,7 +226,7 @@ RSpec.describe Alarms::Create::Classify do
             type: :software,
             accumulator_alarm_name: {
               unexpected_dump: false,
-              imposible_consumption: false
+              impossible_consumption: false
             }
           }
 
@@ -249,7 +249,7 @@ RSpec.describe Alarms::Create::Classify do
           }
         }
 
-        it "Should return a Success response with two created alarms unexpected_dump false and imposible_consumption true" do
+        it "Should return a Success response with two created alarms unexpected_dump false and impossible_consumption true" do
           response = subject.call(input)
 
           expected_response = {
@@ -258,7 +258,7 @@ RSpec.describe Alarms::Create::Classify do
             type: :software,
             accumulator_alarm_name: {
               unexpected_dump: false,
-              imposible_consumption: true
+              impossible_consumption: true
             }
           }
 
@@ -290,7 +290,7 @@ RSpec.describe Alarms::Create::Classify do
             type: :software,
             accumulator_alarm_name: {
               unexpected_dump: true,
-              imposible_consumption: true
+              impossible_consumption: true
             }
           }
 
