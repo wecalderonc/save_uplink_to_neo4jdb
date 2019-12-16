@@ -55,6 +55,17 @@ Follow this good practices:
   - `sudo docker build -t zonawik1/save_uplink_to_neo4jdb:version .`
   - `sudo docker push zonawik1/save_uplink_to_neo4jdb:version`
 
+## Upload code directly to AWS Lambda
+  - Before run the script please configure AWS CLI inside your console.
+  - Use the API secrets inside the file PASSWORD in TECHNOLOGY folder (Google Drive)
+
+### If no new gems
+  - Run `sh script/up`
+
+### If new gems in lambda
+  - Uncomment the comment lines inside the script/up.
+  - Run `sh script/up`
+
 ## Built With
 
 * [Rails](https://github.com/rails/rails) - Framework used
