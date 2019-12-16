@@ -1,9 +1,4 @@
-require 'dry/transaction/operation'impossible_consumption
-impossible_consumption
-impossible_consumption
-impossible_consumption
-impossible_consumption
-impossible_consumption
+require 'dry/transaction/operation'
 
 class Alarms::Accumulators::Calculate
   include Dry::Transaction::Operation
