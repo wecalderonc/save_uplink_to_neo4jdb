@@ -26,7 +26,7 @@ services:
      command: >
        bash -c "apt-get update && apt-get install -y zip &&
        bundle &&
-       rake  neo4j:migrate &&
+       rake neo4j:migrate &&
        rm -r vendor/bundle/ruby/2.5.0/cache &&
        zip -9 -r lambda_function.zip lambda_function.rb vendor app config lib &&
        aws lambda update-function-code --function-name  arn:aws:lambda:us-east-1:247246293844:function:SaveToNeo4jDB --zip-file fileb://lambda_function.zip"
