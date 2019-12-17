@@ -52,7 +52,12 @@ class Alarms::Create::Classify
     }
 
     check_alarms = Alarms::Accumulators::Execute.new.(alarm_attrs)
+    modify_accumulator(current_accumulator, check_alarms.success)
 
     Success input.merge(accumulator_alarm_name: check_alarms.success)
+  end
+
+  def modify_accumulator(current_accumulator, check_alarms)
+    current_accumulator.update(wrong_consumption: true) if check_alarms.values.any?(true)
   end
 end

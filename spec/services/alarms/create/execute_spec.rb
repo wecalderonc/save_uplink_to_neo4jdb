@@ -257,7 +257,7 @@ RSpec.describe Alarms::Create::Execute do
             response = subject.(input)
 
             expect(response).to be_success
-            expect(response.success.is_an_overturning).to eq(true)
+            expect(response.success.wrong_consumption).to eq(true)
           end
         end
 
@@ -269,7 +269,7 @@ RSpec.describe Alarms::Create::Execute do
             response = subject.(input)
 
             expect(response).to be_success
-            expect(response.success.is_an_overturning).to eq(true)
+            expect(response.success.wrong_consumption).to eq(true)
           end
         end
 
@@ -281,7 +281,7 @@ RSpec.describe Alarms::Create::Execute do
             response = subject.(input)
 
             expect(response).to be_success
-            expect(response.success.is_an_overturning).to eq(false)
+            expect(response.success.wrong_consumption).to eq(false)
           end
         end
       end
