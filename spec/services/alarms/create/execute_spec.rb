@@ -236,10 +236,11 @@ RSpec.describe Alarms::Create::Execute do
     end
 
     context "When the object is an accumulator" do
-      let(:last_accumulator) { create(:accumulator, value: "00000000")}
-      let(:thing) { last_accumulator.uplink.thing }
       let(:uplink) { create(:uplink, thing: thing) }
-      let(:current_accumulator) { build(:accumulator, value: "eeeedddd", uplink: uplink) }
+      let(:last_accumulator) { create(:accumulator, value: "00000010")}
+      let(:thing) { last_accumulator.uplink.thing }
+      let(:uplink2) { create(:uplink, thing: thing, time: uplink.time.to_i + 50) }
+      let(:current_accumulator) { build(:accumulator, value: "eeeedddd", uplink: uplink2) }
 
       let(:input) {
         {
@@ -250,11 +251,38 @@ RSpec.describe Alarms::Create::Execute do
       }
 
       context "When all the operations are successful" do
-        it "Should return a Success response" do
+        context "When there is an impossible_consumption" do
+          it "Should return a Success response" do
 
-          response = subject.(input)
+            response = subject.(input)
 
-          expect(response).to be_success
+            expect(response).to be_success
+            expect(response.success.wrong_consumption).to eq(true)
+          end
+        end
+
+        context "When there is an unexpected_dump" do
+
+          it "Should return a Success response" do
+            input[:object] = build(:accumulator, value: "00000001", uplink: uplink2)
+
+            response = subject.(input)
+
+            expect(response).to be_success
+            expect(response.success.wrong_consumption).to eq(true)
+          end
+        end
+
+        context "When there are not unexpected_dump or impossible_consumption" do
+
+          it "Should return a Success response" do
+            input[:object] = build(:accumulator, value: "00000011", uplink: uplink2)
+
+            response = subject.(input)
+
+            expect(response).to be_success
+            expect(response.success.wrong_consumption).to eq(false)
+          end
         end
       end
 
