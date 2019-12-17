@@ -240,17 +240,18 @@ RSpec.describe Alarms::Create::Execute do
       let(:last_accumulator) { create(:accumulator, value: "00000010")}
       let(:thing) { last_accumulator.uplink.thing }
       let(:uplink2) { create(:uplink, thing: thing, time: uplink.time.to_i + 50) }
+      let(:current_accumulator) { build(:accumulator, value: "eeeedddd", uplink: uplink2) }
+
+      let(:input) {
+        {
+          object: current_accumulator,
+          type: :software,
+          model: :accumulator
+        }
+      }
 
       context "When all the operations are successful" do
         context "When there is an impossible_consumption" do
-          let(:current_accumulator) { build(:accumulator, value: "eeeedddd", uplink: uplink2) }
-          let(:input) {
-            {
-              object: current_accumulator,
-              type: :software,
-              model: :accumulator
-            }
-          }
           it "Should return a Success response" do
 
             response = subject.(input)
@@ -261,15 +262,9 @@ RSpec.describe Alarms::Create::Execute do
         end
 
         context "When there is an unexpected_dump" do
-          let(:current_accumulator) { build(:accumulator, value: "00000001", uplink: uplink2) }
-          let(:input) {
-            {
-              object: current_accumulator,
-              type: :software,
-              model: :accumulator
-            }
-          }
+
           it "Should return a Success response" do
+            input[:object] = build(:accumulator, value: "00000001", uplink: uplink2)
 
             response = subject.(input)
 
@@ -279,15 +274,9 @@ RSpec.describe Alarms::Create::Execute do
         end
 
         context "When there are not unexpected_dump or impossible_consumption" do
-          let(:current_accumulator) { build(:accumulator, value: "00000011", uplink: uplink2) }
-          let(:input) {
-            {
-              object: current_accumulator,
-              type: :software,
-              model: :accumulator
-            }
-          }
+
           it "Should return a Success response" do
+            input[:object] = build(:accumulator, value: "00000011", uplink: uplink2)
 
             response = subject.(input)
 
